@@ -1,8 +1,58 @@
 {
-  "name": "ueni-fe-test",
-  "version": "0.0.1",
+  "_args": [
+    [
+      {
+        "raw": "create-react-redux-app-structure",
+        "scope": null,
+        "escapedName": "create-react-redux-app-structure",
+        "name": "create-react-redux-app-structure",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/olga"
+    ]
+  ],
+  "_from": "create-react-redux-app-structure@latest",
+  "_id": "create-react-redux-app-structure@4.2.0",
+  "_inCache": true,
+  "_location": "/create-react-redux-app-structure",
+  "_nodeVersion": "6.14.1",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/create-react-redux-app-structure_4.2.0_1533767905133_0.6267732179199577"
+  },
+  "_npmUser": {
+    "name": "shystruk",
+    "email": "v.stokol@gmail.com"
+  },
+  "_npmVersion": "3.10.10",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "create-react-redux-app-structure",
+    "scope": null,
+    "escapedName": "create-react-redux-app-structure",
+    "name": "create-react-redux-app-structure",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/create-react-redux-app-structure/-/create-react-redux-app-structure-4.2.0.tgz",
+  "_shasum": "c081ca9197f177809c0677bbd049a7064d49a5f2",
+  "_shrinkwrap": null,
+  "_spec": "create-react-redux-app-structure",
+  "_where": "/Users/olga",
   "author": {
-    "name": "ogolovko"
+    "name": "shystruk"
+  },
+  "bin": {
+    "create-react-redux-app-structure": "./cli/cli.js"
+  },
+  "bugs": {
+    "url": "https://github.com/shystruk/create-react-redux-app-structure/issues"
   },
   "config": {
     "ghooks": {
@@ -37,7 +87,7 @@
     "set-interval": "^2.0.0",
     "shelljs": "^0.7.7"
   },
-  "description": "UENI Test Project",
+  "description": "create react redux app structure with build configurations",
   "devDependencies": {
     "autoprefixer": "^7.1.3",
     "babel-cli": "^6.26.0",
@@ -88,6 +138,16 @@
     "webpack-merge": "^4.1.0"
   },
   "directories": {},
+  "dist": {
+    "shasum": "c081ca9197f177809c0677bbd049a7064d49a5f2",
+    "tarball": "https://registry.npmjs.org/create-react-redux-app-structure/-/create-react-redux-app-structure-4.2.0.tgz",
+    "integrity": "sha512-lr409yFZOsgDP24oJ7vmi6415QiMQEJXcmk2U4mS0/AbR9iYUwNfiZX3GXcz0IKMR71RfGQlMEGzwX/9h11qAA==",
+    "fileCount": 98,
+    "unpackedSize": 5589563,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJba3DhCRA9TVsSAnZWagAAakQQAJQga2i57QiyMOePCc+E\nG9qtiI4GllarjegXssx9LQ5ZCFiNBv2dgTbV+dBvqkMrchP1Fhq1++mtq6Cq\nC1q1uILNTgpGQ6V5ZZukgrRTRkZjkKEibnhAAeAaiF4HzcoCFn58b/J09KUe\ni9RFuilsSSMzdzFQI/XZMqdsnWmgXS6mNgqgWHiweAD7I1n6++hrmstIK3vL\novEFM8yT+gQUmeRgwcJtuTskf4usJFpIBm7niM26k2FB63BJ6l68c7pBMeXv\nDtEK2ca20yZnsJYL0Bh6YFIWJzH6FA+xuWau4FcF6aZYqXidJrESgQh34NJU\nRL9OSevc1kI/4OGADCu9uDFi+LImhgK0LaicHsYkBltMjNec00hSTB6fBGjJ\nuhjspeP4rz6WbMZ4xrGv1wc//rxd2M6N5HdU+9xWTQ6h7zjylWBI21oQOFHG\nud/5tMxMKj/TbgUAa1EiHd/tPiDGHK/pUCC176u0yfDYETRFy5MvSLsyWsv4\nHs3sW9wwRB8CXDdWQ1l0k0GxLCiRorE7n7+RDH9sxmt7H4hgCFPv3KdFP7V6\nmSK54mS8686OyME6oBhOhAXwALvyjXk2cj6KGQ5JkB22YLk67WJXTvE5a0ob\nDzCkd6vnJGnCiABU2IBdiSpSziKOAgN3sk2axYeLgfk0yuTkU1E5NMEiv8SR\nbcVb\r\n=/t0q\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "gitHead": "3072531bdd31ccb201325fb2e2d2c88b0ea87094",
+  "homepage": "https://github.com/shystruk/create-react-redux-app-structure#readme",
   "jest": {
     "verbose": true,
     "globals": {},
@@ -116,10 +176,29 @@
       }
     }
   },
+  "keywords": [
+    "react",
+    "redux",
+    "react + redux",
+    "react redux folder structure",
+    "react folder structure",
+    "app structure"
+  ],
   "license": "MIT",
   "main": "index.js",
+  "maintainers": [
+    {
+      "name": "shystruk",
+      "email": "v.stokol@gmail.com"
+    }
+  ],
+  "name": "create-react-redux-app-structure",
   "optionalDependencies": {},
   "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shystruk/create-react-redux-app-structure.git"
+  },
   "scripts": {
     "cypress:open": "cypress open",
     "cypress:run": "cypress run --spec ./app/tests/e2e/cypress/integration/example_spec.js",
@@ -135,5 +214,6 @@
     "staging": "gulp clean-build && webpack --mode=production && gulp prod --production && grunt",
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch"
-  }
+  },
+  "version": "4.2.0"
 }

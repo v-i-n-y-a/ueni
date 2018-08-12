@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1533982540364" clover="3.2.0">
+  <project timestamp="1533982540365" name="All files">
+    <metrics statements="344" coveredstatements="37" conditionals="477" coveredconditionals="12" methods="186" coveredmethods="4" elements="1007" coveredelements="53" complexity="0" loc="344" ncloc="344" packages="19" files="41" classes="41">
+      <package name="app">
+        <metrics statements="21" coveredstatements="3" conditionals="11" coveredconditionals="4" methods="3" coveredmethods="0"/>
+        <file name="app.jsx" path="/Users/olga/test/ueni/app/app.jsx">
+          <metrics statements="17" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="3" coveredmethods="0"/>
+          <line num="1" count="0" type="stmt"/>
+          <line num="2" count="0" type="stmt"/>
+          <line num="3" count="0" type="stmt"/>
+          <line num="4" count="0" type="stmt"/>
+          <line num="5" count="0" type="stmt"/>
+          <line num="6" count="0" type="stmt"/>
+          <line num="7" count="0" type="stmt"/>
+          <line num="10" count="0" type="stmt"/>
+          <line num="13" count="0" type="stmt"/>
+          <line num="14" count="0" type="stmt"/>
+          <line num="15" count="0" type="stmt"/>
+          <line num="16" count="0" type="stmt"/>
+          <line num="17" count="0" type="cond" truecount="0" falsecount="6"/>
+          <line num="18" count="0" type="stmt"/>
+          <line num="20" count="0" type="stmt"/>
+          <line num="21" count="0" type="stmt"/>
+          <line num="25" count="0" type="stmt"/>
+        </file>
+        <file name="store.js" path="/Users/olga/test/ueni/app/store.js">
+          <metrics statements="4" coveredstatements="3" conditionals="5" coveredconditionals="4" methods="0" coveredmethods="0"/>
+          <line num="8" count="1" type="stmt"/>
+          <line num="18" count="1" type="cond" truecount="4" falsecount="1"/>
+          <line num="19" count="0" type="stmt"/>
+          <line num="21" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="app.actions">
+        <metrics statements="25" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="0"/>
+        <file name="alert.js" path="/Users/olga/test/ueni/app/actions/alert.js">
+          <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+          <line num="1" count="1" type="stmt"/>
+          <line num="2" count="1" type="stmt"/>
+          <line num="9" count="0" type="stmt"/>
+          <line num="19" count="0" type="stmt"/>
+        </file>
+        <file name="notification.js" path="/Users/olga/test/ueni/app/actions/notification.js">
+          <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+          <line num="1" count="1" type="stmt"/>
+          <line num="2" count="1" type="stmt"/>
+          <line num="9" count="0" type="stmt"/>
+          <line num="19" count="0" type="stmt"/>
+        </file>
+        <file name="weather.js" path="/Users/olga/test/ueni/app/actions/weather.js">
+          <metrics statements="13" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="0"/>
+          <line num="4" count="1" type="stmt"/>
+          <line num="5" count="1" type="stmt"/>
+          <line num="6" count="1" type="stmt"/>
+          <line num="7" count="1" type="stmt"/>
+          <line num="8" count="1" type="stmt"/>
+          <line num="15" count="0" type="stmt"/>
+          <line num="25" count="0" type="stmt"/>
+          <line num="34" count="0" type="stmt"/>
+          <line num="43" count="1" type="stmt"/>
+          <line num="44" count="0" type="stmt"/>
+          <line num="46" count="0" type="stmt"/>
+          <line num="48" count="0" type="stmt"/>
+          <line num="51" count="0" type="stmt"/>
+        </file>
+        <file name="weather_list.js" path="/Users/olga/test/ueni/app/actions/weather_list.js">
+          <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+          <line num="1" count="1" type="stmt"/>
+          <line num="2" count="1" type="stmt"/>
+          <line num="9" count="0" type="stmt"/>
+          <line num="20" count="0" type="stmt"/>
+        </file>
+      </package>
+      <package name="app.components.Open_Weather_Search">
+        <metrics statements="29" coveredstatements="1" conditionals="15" coveredconditionals="0" methods="17" coveredmethods="0"/>
+        <file name="Open_Weather_Search.jsx" path="/Users/olga/test/ueni/app/components/Open_Weather_Search/Open_Weather_Search.jsx">
+          <metrics statements="27" coveredstatements="0" conditionals="15" coveredconditionals="0" methods="16" coveredmethods="0"/>
+          <line num="16" count="0" type="stmt"/>
+          <line num="18" count="0" type="stmt"/>
+          <line num="22" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="23" count="0" type="stmt"/>
+          <line num="25" count="0" type="stmt"/>
+          <line num="27" count="0" type="stmt"/>
+          <line num="30" count="0" type="stmt"/>
+          <line num="33" count="0" type="cond" truecount="0" falsecount="3"/>
+          <line num="36" count="0" type="stmt"/>
+          <line num="45" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="46" count="0" type="stmt"/>
+          <line num="54" count="0" type="stmt"/>
+          <line num="55" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="57" count="0" type="stmt"/>
+          <line num="61" count="0" type="stmt"/>
+          <line num="63" count="0" type="stmt"/>
+          <line num="65" count="0" type="stmt"/>
+          <line num="66" count="0" type="stmt"/>
+          <line num="68" count="0" type="stmt"/>
+          <line num="72" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="73" count="0" type="stmt"/>
+          <line num="76" count="0" type="stmt"/>
+          <line num="84" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="85" count="0" type="stmt"/>
+          <line num="86" count="0" type="stmt"/>
+          <line num="89" count="0" type="stmt"/>
+          <line num="94" count="0" type="stmt"/>
+        </file>
+        <file name="Open_Weather_Search.utils.js" path="/Users/olga/test/ueni/app/components/Open_Weather_Search/Open_Weather_Search.utils.js">
+          <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+          <line num="7" count="1" type="stmt"/>
+          <line num="8" count="0" type="stmt"/>
+        </file>
+      </package>
+      <package name="app.components.dumb">
+        <metrics statements="56" coveredstatements="0" conditionals="115" coveredconditionals="0" methods="40" coveredmethods="0"/>
+        <file name="Resize_SubPub_Action.jsx" path="/Users/olga/test/ueni/app/components/dumb/Resize_SubPub_Action.jsx">
+          <metrics statements="15" coveredstatements="0" conditionals="41" coveredconditionals="0" methods="13" coveredmethods="0"/>
+          <line num="1" count="0" type="cond" truecount="0" falsecount="8"/>
+          <line num="2" count="0" type="stmt"/>
+          <line num="3" count="0" type="stmt"/>
+          <line num="4" count="0" type="stmt"/>
+          <line num="5" count="0" type="cond" truecount="0" falsecount="23"/>
+          <line num="7" count="0" type="stmt"/>
+          <line num="8" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="16" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="17" count="0" type="stmt"/>
+          <line num="21" count="0" type="stmt"/>
+          <line num="24" count="0" type="stmt"/>
+          <line num="25" count="0" type="stmt"/>
+          <line num="29" count="0" type="stmt"/>
+          <line num="33" count="0" type="stmt"/>
+          <line num="40" count="0" type="stmt"/>
+        </file>
+        <file name="Show_Page_Visibility_API.jsx" path="/Users/olga/test/ueni/app/components/dumb/Show_Page_Visibility_API.jsx">
+          <metrics statements="27" coveredstatements="0" conditionals="37" coveredconditionals="0" methods="15" coveredmethods="0"/>
+          <line num="1" count="0" type="cond" truecount="0" falsecount="8"/>
+          <line num="2" count="0" type="stmt"/>
+          <line num="3" count="0" type="stmt"/>
+          <line num="4" count="0" type="stmt"/>
+          <line num="5" count="0" type="stmt"/>
+          <line num="6" count="0" type="stmt"/>
+          <line num="7" count="0" type="stmt"/>
+          <line num="8" count="0" type="cond" truecount="0" falsecount="23"/>
+          <line num="10" count="0" type="stmt"/>
+          <line num="11" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="19" count="0" type="stmt"/>
+          <line num="20" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="21" count="0" type="stmt"/>
+          <line num="24" count="0" type="stmt"/>
+          <line num="30" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="31" count="0" type="stmt"/>
+          <line num="32" count="0" type="stmt"/>
+          <line num="34" count="0" type="stmt"/>
+          <line num="36" count="0" type="stmt"/>
+          <line num="38" count="0" type="stmt"/>
+          <line num="39" count="0" type="stmt"/>
+          <line num="40" count="0" type="stmt"/>
+          <line num="44" count="0" type="stmt"/>
+          <line num="45" count="0" type="stmt"/>
+          <line num="46" count="0" type="stmt"/>
+          <line num="50" count="0" type="stmt"/>
+          <line num="58" count="0" type="stmt"/>
+        </file>
+        <file name="Weather_View.jsx" path="/Users/olga/test/ueni/app/components/dumb/Weather_View.jsx">
+          <metrics statements="14" coveredstatements="0" conditionals="37" coveredconditionals="0" methods="12" coveredmethods="0"/>
+          <line num="1" count="0" type="cond" truecount="0" falsecount="8"/>
+          <line num="2" count="0" type="stmt"/>
+          <line num="3" count="0" type="stmt"/>
+          <line num="4" count="0" type="cond" truecount="0" falsecount="23"/>
+          <line num="6" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="27" count="0" type="stmt"/>
+          <line num="28" count="0" type="stmt"/>
+          <line num="29" count="0" type="stmt"/>
+          <line num="30" count="0" type="stmt"/>
+          <line num="32" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="33" count="0" type="stmt"/>
+          <line num="36" count="0" type="stmt"/>
+          <line num="42" count="0" type="stmt"/>
+          <line num="58" count="0" type="stmt"/>
+        </file>
+      </package>
+      <package name="app.constants">
+        <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <file name="events.constant.js" path="/Users/olga/test/ueni/app/constants/events.constant.js">
+          <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="0" type="stmt"/>
+        </file>
+        <file name="keyCodes.constant.js" path="/Users/olga/test/ueni/app/constants/keyCodes.constant.js">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="1" type="stmt"/>
+        </file>
+        <file name="request.constant.js" path="/Users/olga/test/ueni/app/constants/request.constant.js">
+          <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="1" type="stmt"/>
+          <line num="7" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="app.constants.components">
+        <metrics statements="7" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <file name="Open_Weather_Search.constant.js" path="/Users/olga/test/ueni/app/constants/components/Open_Weather_Search.constant.js">
+          <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+          <line num="1" count="0" type="stmt"/>
+          <line num="3" count="0" type="stmt"/>
+          <line num="9" count="0" type="stmt"/>
+          <line num="10" count="0" type="stmt"/>
+          <line num="17" count="0" type="stmt"/>
+          <line num="18" count="0" type="stmt"/>
+        </file>
+        <file name="Weather_View.constant.js" path="/Users/olga/test/ueni/app/constants/components/Weather_View.constant.js">
+          <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="0" type="stmt"/>
+        </file>
+      </package>
+      <package name="app.helpers">
+        <metrics statements="66" coveredstatements="5" conditionals="52" coveredconditionals="0" methods="20" coveredmethods="0"/>
+        <file name="appGlobal.js" path="/Users/olga/test/ueni/app/helpers/appGlobal.js">
+          <metrics statements="4" coveredstatements="0" conditionals="7" coveredconditionals="0" methods="2" coveredmethods="0"/>
+          <line num="6" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="8" count="0" type="stmt"/>
+          <line num="12" count="0" type="stmt"/>
+          <line num="14" count="0" type="stmt"/>
+        </file>
+        <file name="domReady.js" path="/Users/olga/test/ueni/app/helpers/domReady.js">
+          <metrics statements="31" coveredstatements="0" conditionals="20" coveredconditionals="0" methods="9" coveredmethods="0"/>
+          <line num="1" count="0" type="stmt"/>
+          <line num="10" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="11" count="0" type="stmt"/>
+          <line num="12" count="0" type="stmt"/>
+          <line num="16" count="0" type="stmt"/>
+          <line num="19" count="0" type="stmt"/>
+          <line num="20" count="0" type="stmt"/>
+          <line num="24" count="0" type="stmt"/>
+          <line num="25" count="0" type="stmt"/>
+          <line num="29" count="0" type="stmt"/>
+          <line num="30" count="0" type="stmt"/>
+          <line num="34" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="35" count="0" type="stmt"/>
+          <line num="36" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="37" count="0" type="stmt"/>
+          <line num="42" count="0" type="stmt"/>
+          <line num="45" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="46" count="0" type="stmt"/>
+          <line num="47" count="0" type="stmt"/>
+          <line num="48" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="49" count="0" type="stmt"/>
+          <line num="50" count="0" type="stmt"/>
+          <line num="51" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="52" count="0" type="stmt"/>
+          <line num="53" count="0" type="stmt"/>
+          <line num="57" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="58" count="0" type="stmt"/>
+          <line num="60" count="0" type="stmt"/>
+          <line num="64" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="65" count="0" type="stmt"/>
+          <line num="68" count="0" type="stmt"/>
+        </file>
+        <file name="geolocation.js" path="/Users/olga/test/ueni/app/helpers/geolocation.js">
+          <metrics statements="19" coveredstatements="2" conditionals="13" coveredconditionals="0" methods="6" coveredmethods="0"/>
+          <line num="7" count="1" type="stmt"/>
+          <line num="8" count="0" type="stmt"/>
+          <line num="9" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="10" count="0" type="stmt"/>
+          <line num="11" count="0" type="stmt"/>
+          <line num="16" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="18" count="0" type="stmt"/>
+          <line num="20" count="0" type="stmt"/>
+          <line num="22" count="0" type="stmt"/>
+          <line num="24" count="0" type="stmt"/>
+          <line num="29" count="0" type="stmt"/>
+          <line num="37" count="1" type="stmt"/>
+          <line num="38" count="0" type="cond" truecount="0" falsecount="3"/>
+          <line num="39" count="0" type="stmt"/>
+          <line num="42" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="43" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="45" count="0" type="stmt"/>
+          <line num="47" count="0" type="stmt"/>
+          <line num="51" count="0" type="stmt"/>
+        </file>
+        <file name="interfaces.js" path="/Users/olga/test/ueni/app/helpers/interfaces.js">
+          <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="6" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="17" count="1" type="stmt"/>
+        </file>
+        <file name="uiActions.js" path="/Users/olga/test/ueni/app/helpers/uiActions.js">
+          <metrics statements="5" coveredstatements="0" conditionals="12" coveredconditionals="0" methods="2" coveredmethods="0"/>
+          <line num="1" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="8" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="9" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="10" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="12" count="0" type="stmt"/>
+        </file>
+        <file name="validation.js" path="/Users/olga/test/ueni/app/helpers/validation.js">
+          <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+          <line num="1" count="0" type="stmt"/>
+          <line num="9" count="0" type="stmt"/>
+          <line num="10" count="0" type="stmt"/>
+          <line num="11" count="0" type="stmt"/>
+        </file>
+      </package>
+      <package name="app.i18n">
+        <metrics statements="3" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <file name="messages.js" path="/Users/olga/test/ueni/app/i18n/messages.js">
+          <metrics statements="3" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
+          <line num="1" count="0" type="stmt"/>
+          <line num="2" count="0" type="stmt"/>
+          <line num="3" count="0" type="cond" truecount="0" falsecount="4"/>
+        </file>
+      </package>
+      <package name="app.i18n.en">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <file name="messages.js" path="/Users/olga/test/ueni/app/i18n/en/messages.js">
+          <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="0" type="stmt"/>
+        </file>
+      </package>
+      <package name="app.i18n.es">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <file name="messages.js" path="/Users/olga/test/ueni/app/i18n/es/messages.js">
+          <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="0" type="stmt"/>
+        </file>
+      </package>
+      <package name="app.i18n.fr">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <file name="messages.js" path="/Users/olga/test/ueni/app/i18n/fr/messages.js">
+          <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="0" type="stmt"/>
+        </file>
+      </package>
+      <package name="app.pages">
+        <metrics statements="35" coveredstatements="0" conditionals="41" coveredconditionals="0" methods="16" coveredmethods="0"/>
+        <file name="App.jsx" path="/Users/olga/test/ueni/app/pages/App.jsx">
+          <metrics statements="35" coveredstatements="0" conditionals="41" coveredconditionals="0" methods="16" coveredmethods="0"/>
+          <line num="1" count="0" type="cond" truecount="0" falsecount="8"/>
+          <line num="2" count="0" type="stmt"/>
+          <line num="3" count="0" type="stmt"/>
+          <line num="4" count="0" type="stmt"/>
+          <line num="5" count="0" type="stmt"/>
+          <line num="6" count="0" type="stmt"/>
+          <line num="7" count="0" type="stmt"/>
+          <line num="9" count="0" type="stmt"/>
+          <line num="10" count="0" type="stmt"/>
+          <line num="12" count="0" type="stmt"/>
+          <line num="15" count="0" type="stmt"/>
+          <line num="16" count="0" type="stmt"/>
+          <line num="19" count="0" type="stmt"/>
+          <line num="20" count="0" type="stmt"/>
+          <line num="21" count="0" type="stmt"/>
+          <line num="22" count="0" type="cond" truecount="0" falsecount="23"/>
+          <line num="25" count="0" type="stmt"/>
+          <line num="33" count="0" type="stmt"/>
+          <line num="34" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="36" count="0" type="stmt"/>
+          <line num="38" count="0" type="stmt"/>
+          <line num="39" count="0" type="stmt"/>
+          <line num="40" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="41" count="0" type="stmt"/>
+          <line num="42" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="43" count="0" type="stmt"/>
+          <line num="47" count="0" type="stmt"/>
+          <line num="53" count="0" type="stmt"/>
+          <line num="54" count="0" type="stmt"/>
+          <line num="55" count="0" type="stmt"/>
+          <line num="57" count="0" type="stmt"/>
+          <line num="67" count="0" type="stmt"/>
+          <line num="68" count="0" type="stmt"/>
+          <line num="69" count="0" type="stmt"/>
+          <line num="78" count="0" type="stmt"/>
+        </file>
+      </package>
+      <package name="app.pages.About">
+        <metrics statements="13" coveredstatements="0" conditionals="33" coveredconditionals="0" methods="11" coveredmethods="0"/>
+        <file name="About.jsx" path="/Users/olga/test/ueni/app/pages/About/About.jsx">
+          <metrics statements="13" coveredstatements="0" conditionals="33" coveredconditionals="0" methods="11" coveredmethods="0"/>
+          <line num="1" count="0" type="cond" truecount="0" falsecount="8"/>
+          <line num="2" count="0" type="stmt"/>
+          <line num="4" count="0" type="stmt"/>
+          <line num="5" count="0" type="stmt"/>
+          <line num="6" count="0" type="cond" truecount="0" falsecount="23"/>
+          <line num="8" count="0" type="stmt"/>
+          <line num="9" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="11" count="0" type="stmt"/>
+          <line num="14" count="0" type="stmt"/>
+          <line num="21" count="0" type="stmt"/>
+          <line num="22" count="0" type="stmt"/>
+          <line num="24" count="0" type="stmt"/>
+          <line num="36" count="0" type="stmt"/>
+        </file>
+      </package>
+      <package name="app.pages.Home">
+        <metrics statements="13" coveredstatements="0" conditionals="37" coveredconditionals="0" methods="11" coveredmethods="0"/>
+        <file name="Home.jsx" path="/Users/olga/test/ueni/app/pages/Home/Home.jsx">
+          <metrics statements="13" coveredstatements="0" conditionals="37" coveredconditionals="0" methods="11" coveredmethods="0"/>
+          <line num="1" count="0" type="cond" truecount="0" falsecount="8"/>
+          <line num="2" count="0" type="stmt"/>
+          <line num="3" count="0" type="stmt"/>
+          <line num="4" count="0" type="stmt"/>
+          <line num="5" count="0" type="stmt"/>
+          <line num="6" count="0" type="cond" truecount="0" falsecount="23"/>
+          <line num="8" count="0" type="stmt"/>
+          <line num="9" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="16" count="0" type="stmt"/>
+          <line num="25" count="0" type="stmt"/>
+          <line num="26" count="0" type="stmt"/>
+          <line num="28" count="0" type="stmt"/>
+          <line num="39" count="0" type="cond" truecount="0" falsecount="4"/>
+        </file>
+      </package>
+      <package name="app.pages.Page_Visibility_API">
+        <metrics statements="9" coveredstatements="0" conditionals="33" coveredconditionals="0" methods="10" coveredmethods="0"/>
+        <file name="Page_Visibility_API.jsx" path="/Users/olga/test/ueni/app/pages/Page_Visibility_API/Page_Visibility_API.jsx">
+          <metrics statements="9" coveredstatements="0" conditionals="33" coveredconditionals="0" methods="10" coveredmethods="0"/>
+          <line num="1" count="0" type="cond" truecount="0" falsecount="8"/>
+          <line num="2" count="0" type="stmt"/>
+          <line num="3" count="0" type="cond" truecount="0" falsecount="23"/>
+          <line num="5" count="0" type="stmt"/>
+          <line num="6" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="8" count="0" type="stmt"/>
+          <line num="11" count="0" type="stmt"/>
+          <line num="13" count="0" type="stmt"/>
+          <line num="29" count="0" type="stmt"/>
+        </file>
+      </package>
+      <package name="app.pages.Resize_SubPub">
+        <metrics statements="8" coveredstatements="0" conditionals="33" coveredconditionals="0" methods="10" coveredmethods="0"/>
+        <file name="Resize_SubPub.jsx" path="/Users/olga/test/ueni/app/pages/Resize_SubPub/Resize_SubPub.jsx">
+          <metrics statements="8" coveredstatements="0" conditionals="33" coveredconditionals="0" methods="10" coveredmethods="0"/>
+          <line num="1" count="0" type="cond" truecount="0" falsecount="8"/>
+          <line num="2" count="0" type="stmt"/>
+          <line num="3" count="0" type="cond" truecount="0" falsecount="23"/>
+          <line num="5" count="0" type="stmt"/>
+          <line num="6" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="8" count="0" type="stmt"/>
+          <line num="11" count="0" type="stmt"/>
+          <line num="25" count="0" type="stmt"/>
+        </file>
+      </package>
+      <package name="app.reducers">
+        <metrics statements="21" coveredstatements="12" conditionals="17" coveredconditionals="8" methods="4" coveredmethods="4"/>
+        <file name="alert.js" path="/Users/olga/test/ueni/app/reducers/alert.js">
+          <metrics statements="5" coveredstatements="3" conditionals="4" coveredconditionals="2" methods="1" coveredmethods="1"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="11" count="3" type="cond" truecount="1" falsecount="2"/>
+          <line num="13" count="0" type="stmt"/>
+          <line num="18" count="0" type="stmt"/>
+          <line num="23" count="3" type="stmt"/>
+        </file>
+        <file name="index.js" path="/Users/olga/test/ueni/app/reducers/index.js">
+          <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        </file>
+        <file name="notification.js" path="/Users/olga/test/ueni/app/reducers/notification.js">
+          <metrics statements="5" coveredstatements="3" conditionals="4" coveredconditionals="2" methods="1" coveredmethods="1"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="11" count="3" type="cond" truecount="1" falsecount="2"/>
+          <line num="13" count="0" type="stmt"/>
+          <line num="18" count="0" type="stmt"/>
+          <line num="23" count="3" type="stmt"/>
+        </file>
+        <file name="weather.js" path="/Users/olga/test/ueni/app/reducers/weather.js">
+          <metrics statements="6" coveredstatements="3" conditionals="5" coveredconditionals="2" methods="1" coveredmethods="1"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="16" count="3" type="cond" truecount="1" falsecount="3"/>
+          <line num="18" count="0" type="stmt"/>
+          <line num="25" count="0" type="stmt"/>
+          <line num="30" count="0" type="stmt"/>
+          <line num="35" count="3" type="stmt"/>
+        </file>
+        <file name="weather_list.js" path="/Users/olga/test/ueni/app/reducers/weather_list.js">
+          <metrics statements="5" coveredstatements="3" conditionals="4" coveredconditionals="2" methods="1" coveredmethods="1"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="13" count="3" type="cond" truecount="1" falsecount="2"/>
+          <line num="15" count="0" type="stmt"/>
+          <line num="23" count="0" type="stmt"/>
+          <line num="31" count="3" type="stmt"/>
+        </file>
+      </package>
+      <package name="app.resources">
+        <metrics statements="16" coveredstatements="1" conditionals="12" coveredconditionals="0" methods="7" coveredmethods="0"/>
+        <file name="Geolocation.resource.js" path="/Users/olga/test/ueni/app/resources/Geolocation.resource.js">
+          <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+          <line num="8" count="1" type="stmt"/>
+          <line num="9" count="0" type="stmt"/>
+        </file>
+        <file name="Open_Weather.resource.js" path="/Users/olga/test/ueni/app/resources/Open_Weather.resource.js">
+          <metrics statements="5" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="2" coveredmethods="0"/>
+          <line num="1" count="0" type="stmt"/>
+          <line num="2" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="9" count="0" type="stmt"/>
+          <line num="10" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="12" count="0" type="stmt"/>
+        </file>
+        <file name="ajax.js" path="/Users/olga/test/ueni/app/resources/ajax.js">
+          <metrics statements="9" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="4" coveredmethods="0"/>
+          <line num="11" count="0" type="stmt"/>
+          <line num="13" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="14" count="0" type="stmt"/>
+          <line num="17" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="18" count="0" type="stmt"/>
+          <line num="21" count="0" type="stmt"/>
+          <line num="22" count="0" type="stmt"/>
+          <line num="28" count="0" type="stmt"/>
+          <line num="29" count="0" type="stmt"/>
+        </file>
+      </package>
+      <package name="app.services">
+        <metrics statements="15" coveredstatements="0" conditionals="74" coveredconditionals="0" methods="21" coveredmethods="0"/>
+        <file name="Alert.jsx" path="/Users/olga/test/ueni/app/services/Alert.jsx">
+          <metrics statements="9" coveredstatements="0" conditionals="37" coveredconditionals="0" methods="11" coveredmethods="0"/>
+          <line num="1" count="0" type="cond" truecount="0" falsecount="8"/>
+          <line num="2" count="0" type="stmt"/>
+          <line num="3" count="0" type="stmt"/>
+          <line num="4" count="0" type="cond" truecount="0" falsecount="23"/>
+          <line num="6" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="12" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="13" count="0" type="stmt"/>
+          <line num="16" count="0" type="stmt"/>
+          <line num="29" count="0" type="stmt"/>
+        </file>
+        <file name="Notification.jsx" path="/Users/olga/test/ueni/app/services/Notification.jsx">
+          <metrics statements="6" coveredstatements="0" conditionals="37" coveredconditionals="0" methods="10" coveredmethods="0"/>
+          <line num="1" count="0" type="cond" truecount="0" falsecount="31"/>
+          <line num="3" count="0" type="stmt"/>
+          <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="21" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="23" count="0" type="stmt"/>
+          <line num="27" count="0" type="stmt"/>
+        </file>
+      </package>
+    </metrics>
+  </project>
+</coverage>

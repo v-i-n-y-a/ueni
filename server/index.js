@@ -29,7 +29,7 @@ function getBusinesses(req, res) {
 module.exports = function (app) {
 
     app.get('/', function (req, res) {
-        res.sendFile(path.resolve(__dirname, './../../index.html'));
+        res.sendFile(path.resolve(__dirname, './../index.html'));
     });
 
     app.get('/businesses', getBusinesses)
