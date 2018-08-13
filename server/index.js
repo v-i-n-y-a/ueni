@@ -32,19 +32,19 @@ module.exports = function (app) {
         res.sendFile(path.resolve(__dirname, './../index.html'));
     });
     
-    app.get('/companies', function (req, res) {
+    app.get('/businesses', function (req, res) {
         res.sendFile(path.resolve(__dirname, './../index.html'));
     });
     
-    app.get('/companies/:id', function (req, res) {
+    app.get('/businesses/:id', function (req, res) {
         res.sendFile(path.resolve(__dirname, './../index.html'));
     });
 
-    app.get('/businesses', getBusinesses);
+    app.get('/api/usinesses', getBusinesses);
 
-    app.get('/businesses/:id', getBusinesses);
+    app.get('/api/businesses/:id', getBusinesses);
 
-    app.get('/reviews', getReviews);
+    app.get('/api/reviews', getReviews);
 
     app.get('/favicon.ico', function (req, res) {
         res.writeHead(204, {

@@ -1,15 +1,40 @@
 import { combineReducers } from 'redux';
 
-/*import alertReducer from './alert';
-import weatherReducer from './weather';
-import weatherListReducer from './weather_list';
-import notificationReducer from './notification';
+const initialState = {
+  data: {},
+  loaded: false
+};
+
+function create_data_reducer(name) {
+  name = name.toUpperCase()
+  return (state = initialState, action) => {
+    switch (action.type) {
+        case `PUSH_${name}`:
+            return {
+                ...state,
+                data: {
+                    ...{...action[name]}
+                }
+            };
+        case `REQUEST_${name}`:
+            return {
+                ...state,
+                loaded: false
+            };
+        case `RECEIVE_${name}`:
+            return {
+                ...state,
+                loaded: true
+            };
+        default:
+            return state;
+    }
+
+  }
+};
+
 
 export default combineReducers({
-    alert: alertReducer,
-    weather: weatherReducer,
-    weatherCities: weatherListReducer,
-    notification: notificationReducer
-});*/
-
-export default combineReducers({})
+    business: create_data_reducer('business'),
+    review: create_data_reducer('review')
+});

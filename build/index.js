@@ -193,8 +193,8 @@ var App = function (_Component) {
                 'div',
                 { className: 'app' },
                 _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _List2.default }),
-                _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/companies', component: _List2.default }),
-                _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/companies/:id', component: _Details2.default })
+                _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/businesses', component: _List2.default }),
+                _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/businesses/:id', component: _Details2.default })
             );
         }
     }]);
@@ -284,21 +284,44 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/index.js");
 
-/*import alertReducer from './alert';
-import weatherReducer from './weather';
-import weatherListReducer from './weather_list';
-import notificationReducer from './notification';
+var initialState = {
+    data: {},
+    loaded: false
+};
 
-export default combineReducers({
-    alert: alertReducer,
-    weather: weatherReducer,
-    weatherCities: weatherListReducer,
-    notification: notificationReducer
-});*/
+function create_data_reducer(name) {
+    name = name.toUpperCase();
+    return function () {
+        var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+        var action = arguments[1];
 
-exports.default = (0, _redux.combineReducers)({});
+        switch (action.type) {
+            case 'PUSH_' + name:
+                return _extends({}, state, {
+                    data: _extends(_extends({}, action[name]))
+                });
+            case 'REQUEST_' + name:
+                return _extends({}, state, {
+                    loaded: false
+                });
+            case 'RECEIVE_' + name:
+                return _extends({}, state, {
+                    loaded: true
+                });
+            default:
+                return state;
+        }
+    };
+};
+
+exports.default = (0, _redux.combineReducers)({
+    business: create_data_reducer('business'),
+    review: create_data_reducer('review')
+});
 
 /***/ }),
 
