@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3761,7 +3761,7 @@ var IntlMessageFormat = __webpack_require__(/*! ./lib/main */ "./node_modules/in
 
 // Add all locale data to `IntlMessageFormat`. This module will be ignored when
 // bundling for the browser with Browserify/Webpack.
-__webpack_require__(/*! ./lib/locales */ 2);
+__webpack_require__(/*! ./lib/locales */ 3);
 
 // Re-export `IntlMessageFormat` as the CommonJS default exports with all the
 // locale data registered, and with English set as the default locale. Define
@@ -4438,7 +4438,7 @@ var IntlRelativeFormat = __webpack_require__(/*! ./lib/main */ "./node_modules/i
 
 // Add all locale data to `IntlRelativeFormat`. This module will be ignored when
 // bundling for the browser with Browserify/Webpack.
-__webpack_require__(/*! ./lib/locales */ 3);
+__webpack_require__(/*! ./lib/locales */ 4);
 
 // Re-export `IntlRelativeFormat` as the CommonJS default exports with all the
 // locale data registered, and with English set as the default locale. Define
@@ -24486,7 +24486,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormattedPlural", function() { return FormattedPlural; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormattedMessage", function() { return FormattedMessage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormattedHTMLMessage", function() { return FormattedHTMLMessage; });
-/* harmony import */ var _locale_data_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../locale-data/index.js */ 1);
+/* harmony import */ var _locale_data_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../locale-data/index.js */ 2);
 /* harmony import */ var _locale_data_index_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_locale_data_index_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var intl_messageformat__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! intl-messageformat */ "./node_modules/intl-messageformat/index.js");
 /* harmony import */ var intl_messageformat__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(intl_messageformat__WEBPACK_IMPORTED_MODULE_1__);
@@ -31989,20 +31989,29 @@ module.exports = function(originalModule) {
 /***/ }),
 
 /***/ 1:
-/*!*****************************************!*\
-  !*** ../locale-data/index.js (ignored) ***!
-  \*****************************************/
+/*!******************************************************************************************************************!*\
+  !*** multi react react-dom react-router-dom react-redux react-intl redux redux-promise redux-thunk redux-logger ***!
+  \******************************************************************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-/* (ignored) */
+__webpack_require__(/*! react */"./node_modules/react/index.js");
+__webpack_require__(/*! react-dom */"./node_modules/react-dom/index.js");
+__webpack_require__(/*! react-router-dom */"./node_modules/react-router-dom/es/index.js");
+__webpack_require__(/*! react-redux */"./node_modules/react-redux/es/index.js");
+__webpack_require__(/*! react-intl */"./node_modules/react-intl/lib/index.es.js");
+__webpack_require__(/*! redux */"./node_modules/redux/es/index.js");
+__webpack_require__(/*! redux-promise */"./node_modules/redux-promise/lib/index.js");
+__webpack_require__(/*! redux-thunk */"./node_modules/redux-thunk/es/index.js");
+module.exports = __webpack_require__(/*! redux-logger */"./node_modules/redux-logger/dist/redux-logger.js");
+
 
 /***/ }),
 
 /***/ 2:
-/*!*******************************!*\
-  !*** ./lib/locales (ignored) ***!
-  \*******************************/
+/*!*****************************************!*\
+  !*** ../locale-data/index.js (ignored) ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -32022,22 +32031,13 @@ module.exports = function(originalModule) {
 /***/ }),
 
 /***/ 4:
-/*!******************************************************************************************************************!*\
-  !*** multi react react-dom react-router-dom react-redux react-intl redux redux-promise redux-thunk redux-logger ***!
-  \******************************************************************************************************************/
+/*!*******************************!*\
+  !*** ./lib/locales (ignored) ***!
+  \*******************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-__webpack_require__(/*! react */"./node_modules/react/index.js");
-__webpack_require__(/*! react-dom */"./node_modules/react-dom/index.js");
-__webpack_require__(/*! react-router-dom */"./node_modules/react-router-dom/es/index.js");
-__webpack_require__(/*! react-redux */"./node_modules/react-redux/es/index.js");
-__webpack_require__(/*! react-intl */"./node_modules/react-intl/lib/index.es.js");
-__webpack_require__(/*! redux */"./node_modules/redux/es/index.js");
-__webpack_require__(/*! redux-promise */"./node_modules/redux-promise/lib/index.js");
-__webpack_require__(/*! redux-thunk */"./node_modules/redux-thunk/es/index.js");
-module.exports = __webpack_require__(/*! redux-logger */"./node_modules/redux-logger/dist/redux-logger.js");
-
+/* (ignored) */
 
 /***/ })
 

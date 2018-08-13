@@ -31,12 +31,20 @@ module.exports = function (app) {
     app.get('/', function (req, res) {
         res.sendFile(path.resolve(__dirname, './../index.html'));
     });
+    
+    app.get('/companies', function (req, res) {
+        res.sendFile(path.resolve(__dirname, './../index.html'));
+    });
+    
+    app.get('/companies/:id', function (req, res) {
+        res.sendFile(path.resolve(__dirname, './../index.html'));
+    });
 
-    app.get('/businesses', getBusinesses)
+    app.get('/businesses', getBusinesses);
 
-    app.get('/businesses/:id', getBusinesses)
+    app.get('/businesses/:id', getBusinesses);
 
-    app.get('/reviews', getReviews)
+    app.get('/reviews', getReviews);
 
     app.get('/favicon.ico', function (req, res) {
         res.writeHead(204, {

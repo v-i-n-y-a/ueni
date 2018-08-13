@@ -1,2 +1,3 @@
 node_modules
 create-react-redux-app-structure
+app/tests/__tests__/coverage/lcov-report

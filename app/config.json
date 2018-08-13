@@ -1,12 +1,13 @@
 {
   "staging": {
-    "assetHost": "."
+    "assetHost": "<!-- https://url -->"
   },
   "prod": {
-    "assetHost": "."
+    "assetHost": "<!-- https://url -->"
   },
   "dev": {
-    "assetHost": "."
+    "assetHost": ".",
+    "serverHost": "http://localhost:8080/"
   },
   "PATHS": {
     "app": "./app",
@@ -15,6 +16,5 @@
     "build": "./build",
     "vendor": "./app/vendor",
     "styles": "./build/styles.css",
-    "external": ["./app/helpers/appGlobal.js", "./app/helpers/domReady.js"]
   }
 }
