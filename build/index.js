@@ -130,6 +130,75 @@ _reactDom2.default.render(_react2.default.createElement(
 
 /***/ }),
 
+/***/ "./app/components/Card.jsx":
+/*!*********************************!*\
+  !*** ./app/components/Card.jsx ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Card = function Card(_ref) {
+  var item = _ref.item;
+  return _react2.default.createElement(
+    'div',
+    { className: 'card' },
+    _react2.default.createElement(
+      'div',
+      { className: 'card-image' },
+      _react2.default.createElement('img', { src: item.imageUrl, alt: item.name })
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: 'card-body' },
+      _react2.default.createElement(
+        'h2',
+        null,
+        item.name
+      ),
+      _react2.default.createElement(
+        'div',
+        { className: 'card-address' },
+        item.city,
+        ', ',
+        item.country
+      ),
+      _react2.default.createElement(
+        'div',
+        { className: 'card-description' },
+        item.description
+      ),
+      _react2.default.createElement(
+        'div',
+        { className: 'card-details-link' },
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: '/details/' + item.id },
+          'Continue'
+        )
+      )
+    )
+  );
+};
+
+exports.default = Card;
+
+/***/ }),
+
 /***/ "./app/components/Filter.jsx":
 /*!***********************************!*\
   !*** ./app/components/Filter.jsx ***!
@@ -169,6 +238,45 @@ var Filter = function Filter(_ref) {
 };
 
 exports.default = Filter;
+
+/***/ }),
+
+/***/ "./app/components/Header.jsx":
+/*!***********************************!*\
+  !*** ./app/components/Header.jsx ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Header = function Header(_ref) {
+  var logo = _ref.logo,
+      title = _ref.title;
+  return _react2.default.createElement(
+    "header",
+    { className: "header" },
+    _react2.default.createElement(
+      "div",
+      { className: "header-logo" },
+      logo
+    ),
+    title
+  );
+};
+
+exports.default = Header;
 
 /***/ }),
 
@@ -372,13 +480,17 @@ var _actions = __webpack_require__(/*! ./actions */ "./app/pages/actions.js");
 
 var _selectors = __webpack_require__(/*! ./selectors */ "./app/pages/selectors.js");
 
+var _Card = __webpack_require__(/*! ../components/Card.jsx */ "./app/components/Card.jsx");
+
+var _Card2 = _interopRequireDefault(_Card);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Details = function Details(props) {
   return _react2.default.createElement(
     'div',
     null,
-    'Details'
+    _react2.default.createElement(Header, { title: 'Review', logo: '2' })
   );
 };
 
@@ -412,8 +524,6 @@ var _selectors = __webpack_require__(/*! ./selectors */ "./app/pages/selectors.j
 
 var _actions = __webpack_require__(/*! ./actions */ "./app/pages/actions.js");
 
-var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-
 var _Filter = __webpack_require__(/*! ../components/Filter.jsx */ "./app/components/Filter.jsx");
 
 var _Filter2 = _interopRequireDefault(_Filter);
@@ -421,6 +531,14 @@ var _Filter2 = _interopRequireDefault(_Filter);
 var _Sort = __webpack_require__(/*! ../components/Sort.jsx */ "./app/components/Sort.jsx");
 
 var _Sort2 = _interopRequireDefault(_Sort);
+
+var _Card = __webpack_require__(/*! ../components/Card.jsx */ "./app/components/Card.jsx");
+
+var _Card2 = _interopRequireDefault(_Card);
+
+var _Header = __webpack_require__(/*! ../components/Header.jsx */ "./app/components/Header.jsx");
+
+var _Header2 = _interopRequireDefault(_Header);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -525,16 +643,7 @@ var List = function (_Component) {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(
-          'header',
-          null,
-          _react2.default.createElement(
-            'div',
-            { className: 'logo' },
-            '1'
-          ),
-          'SELECT YOUR BUSINESS'
-        ),
+        _react2.default.createElement(_Header2.default, { title: 'SELECT YOUR BUSINESS', logo: '1' }),
         _react2.default.createElement(
           'nav',
           null,
@@ -550,45 +659,7 @@ var List = function (_Component) {
           'section',
           null,
           list.map(function (item) {
-            return _react2.default.createElement(
-              'div',
-              { key: item.id },
-              _react2.default.createElement(
-                'div',
-                { className: 'card-image' },
-                _react2.default.createElement('img', { src: item.imageUrl, alt: item.name })
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'card-body' },
-                _react2.default.createElement(
-                  'h2',
-                  null,
-                  item.name
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'card-address' },
-                  item.city,
-                  ', ',
-                  item.country
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'card-description' },
-                  item.description
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'card-details-link' },
-                  _react2.default.createElement(
-                    _reactRouterDom.Link,
-                    { to: '/details/' + item.id },
-                    'Continue'
-                  )
-                )
-              )
-            );
+            return _react2.default.createElement(_Card2.default, { key: item.id, item: item });
           })
         )
       );
@@ -701,37 +772,9 @@ var mdtpDetails = exports.mdtpDetails = function mdtpDetails(dispatch) {
   !*** ./app/pages/selectors.js ***!
   \********************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.mstpReviews = exports.mstpList = undefined;
-
-var _reselect = __webpack_require__(/*! reselect */ "./node_modules/reselect/lib/index.js");
-
-var _property = __webpack_require__(/*! lodash/property */ "./node_modules/lodash/property.js");
-
-var _property2 = _interopRequireDefault(_property);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var getBusinesses = (0, _property2.default)('businesses');
-
-var mstpList = exports.mstpList = (0, _reselect.createSelector)(getBusinesses, function (businesses) {
-  return { businesses: businesses, categories: businesses.data.map(function (item) {
-      return item.category;
-    }) };
-});
-
-var getReviews = (0, _property2.default)('reviews.data');
-
-var mstpReviews = exports.mstpReviews = (0, _reselect.createSelector)(getReviews, function (reviews) {
-  return { reviews: reviews };
-});
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: Unexpected token, expected , (28:0)\n\n\u001b[0m \u001b[90m 26 | \u001b[39m  }\n \u001b[90m 27 | \u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 28 | \u001b[39m\n \u001b[90m    | \u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n");
 
 /***/ }),
 
@@ -53877,142 +53920,6 @@ if (hadRuntime) {
   (function() { return this })() || Function("return this")()
 );
 
-
-/***/ }),
-
-/***/ "./node_modules/reselect/lib/index.js":
-/*!********************************************!*\
-  !*** ./node_modules/reselect/lib/index.js ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-exports.defaultMemoize = defaultMemoize;
-exports.createSelectorCreator = createSelectorCreator;
-exports.createStructuredSelector = createStructuredSelector;
-function defaultEqualityCheck(a, b) {
-  return a === b;
-}
-
-function areArgumentsShallowlyEqual(equalityCheck, prev, next) {
-  if (prev === null || next === null || prev.length !== next.length) {
-    return false;
-  }
-
-  // Do this in a for loop (and not a `forEach` or an `every`) so we can determine equality as fast as possible.
-  var length = prev.length;
-  for (var i = 0; i < length; i++) {
-    if (!equalityCheck(prev[i], next[i])) {
-      return false;
-    }
-  }
-
-  return true;
-}
-
-function defaultMemoize(func) {
-  var equalityCheck = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultEqualityCheck;
-
-  var lastArgs = null;
-  var lastResult = null;
-  // we reference arguments instead of spreading them for performance reasons
-  return function () {
-    if (!areArgumentsShallowlyEqual(equalityCheck, lastArgs, arguments)) {
-      // apply arguments instead of spreading for performance.
-      lastResult = func.apply(null, arguments);
-    }
-
-    lastArgs = arguments;
-    return lastResult;
-  };
-}
-
-function getDependencies(funcs) {
-  var dependencies = Array.isArray(funcs[0]) ? funcs[0] : funcs;
-
-  if (!dependencies.every(function (dep) {
-    return typeof dep === 'function';
-  })) {
-    var dependencyTypes = dependencies.map(function (dep) {
-      return typeof dep;
-    }).join(', ');
-    throw new Error('Selector creators expect all input-selectors to be functions, ' + ('instead received the following types: [' + dependencyTypes + ']'));
-  }
-
-  return dependencies;
-}
-
-function createSelectorCreator(memoize) {
-  for (var _len = arguments.length, memoizeOptions = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-    memoizeOptions[_key - 1] = arguments[_key];
-  }
-
-  return function () {
-    for (var _len2 = arguments.length, funcs = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-      funcs[_key2] = arguments[_key2];
-    }
-
-    var recomputations = 0;
-    var resultFunc = funcs.pop();
-    var dependencies = getDependencies(funcs);
-
-    var memoizedResultFunc = memoize.apply(undefined, [function () {
-      recomputations++;
-      // apply arguments instead of spreading for performance.
-      return resultFunc.apply(null, arguments);
-    }].concat(memoizeOptions));
-
-    // If a selector is called with the exact same arguments we don't need to traverse our dependencies again.
-    var selector = defaultMemoize(function () {
-      var params = [];
-      var length = dependencies.length;
-
-      for (var i = 0; i < length; i++) {
-        // apply arguments instead of spreading and mutate a local list of params for performance.
-        params.push(dependencies[i].apply(null, arguments));
-      }
-
-      // apply arguments instead of spreading for performance.
-      return memoizedResultFunc.apply(null, params);
-    });
-
-    selector.resultFunc = resultFunc;
-    selector.recomputations = function () {
-      return recomputations;
-    };
-    selector.resetRecomputations = function () {
-      return recomputations = 0;
-    };
-    return selector;
-  };
-}
-
-var createSelector = exports.createSelector = createSelectorCreator(defaultMemoize);
-
-function createStructuredSelector(selectors) {
-  var selectorCreator = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : createSelector;
-
-  if (typeof selectors !== 'object') {
-    throw new Error('createStructuredSelector expects first argument to be an object ' + ('where each property is a selector, instead received a ' + typeof selectors));
-  }
-  var objectKeys = Object.keys(selectors);
-  return selectorCreator(objectKeys.map(function (key) {
-    return selectors[key];
-  }), function () {
-    for (var _len3 = arguments.length, values = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
-      values[_key3] = arguments[_key3];
-    }
-
-    return values.reduce(function (composition, value, index) {
-      composition[objectKeys[index]] = value;
-      return composition;
-    }, {});
-  });
-}
 
 /***/ }),
 

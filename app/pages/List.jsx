@@ -3,9 +3,10 @@ import { connect } from 'react-redux'
 import { mstpList} from './selectors'
 import { mdtpList } from './actions'
 
-import { Link } from 'react-router-dom'
 import Filter from '../components/Filter.jsx'
 import Sort from '../components/Sort.jsx'
+import Card from '../components/Card.jsx'
+import Header from '../components/Header.jsx'
 
 class List extends Component {
   
@@ -69,10 +70,7 @@ class List extends Component {
     const { list, order } = this.state
     return (
       <div>
-        <header>
-          <div className="logo">1</div>
-          SELECT YOUR BUSINESS
-        </header>
+        <Header title="SELECT YOUR BUSINESS" logo="1" />
         <nav>
           <Sort onChange={this.sortList} order={order} />
           <div>
@@ -81,23 +79,7 @@ class List extends Component {
         </nav>
         <section>
           {list.map(item => 
-            <div key={item.id}>
-              <div className="card-image" >
-                <img src={item.imageUrl} alt={item.name} />
-              </div>
-              <div className="card-body">
-                <h2>{item.name}</h2>
-                <div className="card-address">
-                    {item.city}, {item.country}
-                </div>
-                <div className="card-description">
-                    {item.description}
-                </div>
-                <div className="card-details-link">
-                  <Link to={`/details/${item.id}`}>Continue</Link>
-                </div>
-              </div>
-            </div>
+            <Card key={item.id} item={item}/>
           )}
         </section>
       </div>

@@ -8,10 +8,20 @@ export const mstpList = createSelector(
   businesses => ({ businesses, categories: businesses.data.map( item =>  item.category ) })
 )
 
+const getBusiness = (state, ownProps) => property(`businesses.byId.${ownProps.id}`)
+const getStatus = property('businesses.loading')
 const getReviews = property('reviews.data')
 
-export const mstpReviews = createSelector(
+export const mstpDetails = createSelector(
+  getBusiness,
+  getStatus,
   getReviews,
-  reviews => ({ reviews })
-)
+  (businesses, status, reviews) => {
+    const len = reviews.length
+    const score = 'No Reviews'
+    if (len > 0) {
+      const scores = reviews.map(r => r.score)
+      
+    }
+  }
 
