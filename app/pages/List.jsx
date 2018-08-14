@@ -11,25 +11,38 @@ class List extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      categories: []
+      list: [],
+      category: null
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.categories !== this.props.categories) 
-      this.setState({ categories: nextProps.categories })
-  }
+    const { businesses: { data } } = nextProps
+    const { category } = this.state
+    if (data !== this.props.businesses.data) {
+      //filter list again if data has been changed
+      if (category)
+        this.setState({ list: this.filterList(data)({ value: category}) })
+      else
+        this.setState({ list: data })
+  }}
 
   componentWillMount() {
     //console.log(this.props)
-    const { businesses: { loading }, fetchBusinesses, categories } = this.props
+    const { businesses: { data, loading }, fetchBusinesses, categories } = this.props
     if (!loading) fetchBusinesses()
-    this.setState({ categories })
+    this.setState({ list: data })
+  }
+
+  filterList = data => ({ value }) => {
+    const newList = data.filter( ({ category }) => category === value )
+    console.log('filterList')
+    this.setState({ list: newList, category: value })
   }
 
   render() {
-    const { businesses: { loading, data, error } } = this.props
-    const { categories } = this.state
+    const { businesses: { loading, data, error }, categories } = this.props
+    const { list } = this.state
     return (
       <div>
         <header>
@@ -39,11 +52,11 @@ class List extends Component {
         <nav>
           <div>Sort: A-Z</div>
           <div>
-            Category: <Filter data={categories} onChange={this.filterList} placeholder="All"/>
+            Category: <Filter data={categories} onChange={this.filterList(data)} placeholder="All"/>
           </div>
         </nav>
         <section>
-          {data.map(item => 
+          {list.map(item => 
             <div key={item.id}>
               <div className="card-image" >
                 <img src={item.imageUrl} alt={item.name} />

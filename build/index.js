@@ -152,10 +152,12 @@ var _reactSelectize = __webpack_require__(/*! react-selectize */ "./node_modules
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var emptyFunc = function emptyFunc() {};
 var Filter = function Filter(_ref) {
   var data = _ref.data,
       placeholder = _ref.placeholder,
-      onChange = _ref.onChange;
+      _ref$onChange = _ref.onChange,
+      onChange = _ref$onChange === undefined ? emptyFunc : _ref$onChange;
   return _react2.default.createElement(_reactSelectize.SimpleSelect, {
     placeholder: 'All',
     onValueChange: onChange,
@@ -330,8 +332,22 @@ var List = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).call(this, props));
 
+    _this.filterList = function (data) {
+      return function (_ref) {
+        var value = _ref.value;
+
+        var newList = data.filter(function (_ref2) {
+          var category = _ref2.category;
+          return category === value;
+        });
+        console.log('filterList');
+        _this.setState({ list: newList, category: value });
+      };
+    };
+
     _this.state = {
-      categories: []
+      list: [],
+      category: null
     };
     return _this;
   }
@@ -339,28 +355,38 @@ var List = function (_Component) {
   _createClass(List, [{
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
-      if (nextProps.categories !== this.props.categories) this.setState({ categories: nextProps.categories });
+      var data = nextProps.businesses.data;
+      var category = this.state.category;
+
+      if (data !== this.props.businesses.data) {
+        //filter list again if data has been changed
+        if (category) this.setState({ list: this.filterList(data)({ value: category }) });else this.setState({ list: data });
+      }
     }
   }, {
     key: 'componentWillMount',
     value: function componentWillMount() {
       //console.log(this.props)
       var _props = this.props,
-          loading = _props.businesses.loading,
+          _props$businesses = _props.businesses,
+          data = _props$businesses.data,
+          loading = _props$businesses.loading,
           fetchBusinesses = _props.fetchBusinesses,
           categories = _props.categories;
 
       if (!loading) fetchBusinesses();
-      this.setState({ categories: categories });
+      this.setState({ list: data });
     }
   }, {
     key: 'render',
     value: function render() {
-      var _props$businesses = this.props.businesses,
-          loading = _props$businesses.loading,
-          data = _props$businesses.data,
-          error = _props$businesses.error;
-      var categories = this.state.categories;
+      var _props2 = this.props,
+          _props2$businesses = _props2.businesses,
+          loading = _props2$businesses.loading,
+          data = _props2$businesses.data,
+          error = _props2$businesses.error,
+          categories = _props2.categories;
+      var list = this.state.list;
 
       return _react2.default.createElement(
         'div',
@@ -387,13 +413,13 @@ var List = function (_Component) {
             'div',
             null,
             'Category: ',
-            _react2.default.createElement(_Filter2.default, { data: categories, onChange: this.filterList, placeholder: 'All' })
+            _react2.default.createElement(_Filter2.default, { data: categories, onChange: this.filterList(data), placeholder: 'All' })
           )
         ),
         _react2.default.createElement(
           'section',
           null,
-          data.map(function (item) {
+          list.map(function (item) {
             return _react2.default.createElement(
               'div',
               { key: item.id },
