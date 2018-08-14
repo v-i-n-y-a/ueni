@@ -1,7 +1,7 @@
 import React from 'react';
 import { SimpleSelect } from 'react-selectize'
+import { emptyFunc } from './utils'
 
-const emptyFunc = () => {}
 const Filter = ({ data, placeholder, onChange = emptyFunc }) =>
   <SimpleSelect 
     placeholder="All" 

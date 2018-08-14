@@ -150,14 +150,15 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactSelectize = __webpack_require__(/*! react-selectize */ "./node_modules/react-selectize/src/index.js");
 
+var _utils = __webpack_require__(/*! ./utils */ "./app/components/utils.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var emptyFunc = function emptyFunc() {};
 var Filter = function Filter(_ref) {
   var data = _ref.data,
       placeholder = _ref.placeholder,
       _ref$onChange = _ref.onChange,
-      onChange = _ref$onChange === undefined ? emptyFunc : _ref$onChange;
+      onChange = _ref$onChange === undefined ? _utils.emptyFunc : _ref$onChange;
   return _react2.default.createElement(_reactSelectize.SimpleSelect, {
     placeholder: 'All',
     onValueChange: onChange,
@@ -168,6 +169,107 @@ var Filter = function Filter(_ref) {
 };
 
 exports.default = Filter;
+
+/***/ }),
+
+/***/ "./app/components/Sort.jsx":
+/*!*********************************!*\
+  !*** ./app/components/Sort.jsx ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _utils = __webpack_require__(/*! ./utils */ "./app/components/utils.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Sort = function (_Component) {
+  _inherits(Sort, _Component);
+
+  function Sort(props) {
+    _classCallCheck(this, Sort);
+
+    var _this = _possibleConstructorReturn(this, (Sort.__proto__ || Object.getPrototypeOf(Sort)).call(this, props));
+
+    _this.changeOrder = function (e) {
+      e.preventDefault();
+      var onChange = _this.props.onChange;
+
+      _this.setState(function (prevState, props) {
+        var newOrder = prevState.order === 'ASC' ? 'DESC' : 'ASC';
+        onChange(newOrder);
+        return { order: newOrder };
+      });
+    };
+
+    _this.state = {
+      order: _this.props.order
+    };
+    return _this;
+  }
+
+  _createClass(Sort, [{
+    key: 'render',
+    value: function render() {
+      var order = this.state.order;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'sort' },
+        _react2.default.createElement(
+          'strong',
+          null,
+          'Sort'
+        ),
+        _react2.default.createElement(
+          'a',
+          { href: '#', onClick: this.changeOrder },
+          order === 'ASC' ? 'A-Z' : 'Z-A'
+        )
+      );
+    }
+  }]);
+
+  return Sort;
+}(_react.Component);
+
+exports.default = Sort;
+
+/***/ }),
+
+/***/ "./app/components/utils.js":
+/*!*********************************!*\
+  !*** ./app/components/utils.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var emptyFunc = exports.emptyFunc = function emptyFunc() {};
 
 /***/ }),
 
@@ -316,6 +418,10 @@ var _Filter = __webpack_require__(/*! ../components/Filter.jsx */ "./app/compone
 
 var _Filter2 = _interopRequireDefault(_Filter);
 
+var _Sort = __webpack_require__(/*! ../components/Sort.jsx */ "./app/components/Sort.jsx");
+
+var _Sort2 = _interopRequireDefault(_Sort);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -333,21 +439,43 @@ var List = function (_Component) {
     var _this = _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).call(this, props));
 
     _this.filterList = function (data) {
-      return function (_ref) {
-        var value = _ref.value;
-
-        var newList = data.filter(function (_ref2) {
-          var category = _ref2.category;
-          return category === value;
+      return function (option) {
+        if (!option) {
+          _this.setState({ list: data, category: null });
+          return;
+        }
+        var newList = data.filter(function (_ref) {
+          var category = _ref.category;
+          return category === option.value;
         });
-        console.log('filterList');
-        _this.setState({ list: newList, category: value });
+        _this.setState({ list: newList, category: option.value });
       };
+    };
+
+    _this.sortList = function (order) {
+      if (!order) return;
+
+      var list = _this.state.list;
+
+      if (list.length === 0) return;
+
+      var sortMethod = {
+        ASC: { lover: -1, higher: 1 },
+        DESC: { lover: 1, higher: -1 }
+      };
+      var method = sortMethod[order];
+      var newList = list.slice().sort(function (prev, next) {
+        if (prev.name < next.name) return method.lover;
+        if (prev.name > next.name) return method.higher;
+        return 0;
+      });
+      _this.setState({ list: newList, order: order });
     };
 
     _this.state = {
       list: [],
-      category: null
+      category: null,
+      order: 'ASC'
     };
     return _this;
   }
@@ -356,11 +484,15 @@ var List = function (_Component) {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       var data = nextProps.businesses.data;
-      var category = this.state.category;
+      var _state = this.state,
+          category = _state.category,
+          order = _state.order;
 
       if (data !== this.props.businesses.data) {
         //filter list again if data has been changed
-        if (category) this.setState({ list: this.filterList(data)({ value: category }) });else this.setState({ list: data });
+        var filter = category ? { value: category } : null;
+        this.filterList(data)(filter);
+        this.sortList(order);
       }
     }
   }, {
@@ -386,7 +518,9 @@ var List = function (_Component) {
           data = _props2$businesses.data,
           error = _props2$businesses.error,
           categories = _props2.categories;
-      var list = this.state.list;
+      var _state2 = this.state,
+          list = _state2.list,
+          order = _state2.order;
 
       return _react2.default.createElement(
         'div',
@@ -404,11 +538,7 @@ var List = function (_Component) {
         _react2.default.createElement(
           'nav',
           null,
-          _react2.default.createElement(
-            'div',
-            null,
-            'Sort: A-Z'
-          ),
+          _react2.default.createElement(_Sort2.default, { onChange: this.sortList, order: order }),
           _react2.default.createElement(
             'div',
             null,

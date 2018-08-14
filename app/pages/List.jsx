@@ -5,6 +5,7 @@ import { mdtpList } from './actions'
 
 import { Link } from 'react-router-dom'
 import Filter from '../components/Filter.jsx'
+import Sort from '../components/Sort.jsx'
 
 class List extends Component {
   
@@ -12,20 +13,21 @@ class List extends Component {
     super(props)
     this.state = {
       list: [],
-      category: null
+      category: null,
+      order: 'ASC'
     }
   }
 
   componentWillReceiveProps(nextProps) {
     const { businesses: { data } } = nextProps
-    const { category } = this.state
+    const { category, order } = this.state
     if (data !== this.props.businesses.data) {
       //filter list again if data has been changed
-      if (category)
-        this.setState({ list: this.filterList(data)({ value: category}) })
-      else
-        this.setState({ list: data })
-  }}
+      const filter = category ? { value: category } : null
+      this.filterList(data)(filter)
+      this.sortList(order)
+    }
+  }
 
   componentWillMount() {
     //console.log(this.props)
@@ -34,15 +36,37 @@ class List extends Component {
     this.setState({ list: data })
   }
 
-  filterList = data => ({ value }) => {
-    const newList = data.filter( ({ category }) => category === value )
-    console.log('filterList')
-    this.setState({ list: newList, category: value })
+  filterList = data => option => {
+    if (!option) {
+      this.setState({ list: data, category: null })
+      return
+    }
+    const newList = data.filter( ({ category }) => category === option.value )
+    this.setState({ list: newList, category: option.value })
+  }
+
+  sortList = order => {
+    if (!order) return 
+
+    const { list } = this.state
+    if (list.length === 0) return
+    
+    const sortMethod = {
+      ASC: { lover: -1, higher: 1 },
+      DESC: { lover: 1, higher: -1 }
+    }
+    const method = sortMethod[order]
+    const newList = list.slice().sort((prev, next) => {
+      if (prev.name < next.name) return method.lover
+      if (prev.name > next.name) return method.higher
+      return 0
+    })
+    this.setState({ list: newList, order })
   }
 
   render() {
     const { businesses: { loading, data, error }, categories } = this.props
-    const { list } = this.state
+    const { list, order } = this.state
     return (
       <div>
         <header>
@@ -50,7 +74,7 @@ class List extends Component {
           SELECT YOUR BUSINESS
         </header>
         <nav>
-          <div>Sort: A-Z</div>
+          <Sort onChange={this.sortList} order={order} />
           <div>
             Category: <Filter data={categories} onChange={this.filterList(data)} placeholder="All"/>
           </div>
