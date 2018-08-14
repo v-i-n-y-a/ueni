@@ -1,4 +1,5 @@
 import { CALL_API } from 'redux-api-middleware';
+import { bindActionCreators } from 'redux'
 
 const API_URL = 'http://localhost:8080/api'
 
@@ -33,7 +34,7 @@ export const config = {
 
 }
 
-export const fetchBusinesses = () => ({
+const fetchBusinesses = () => ({
   [CALL_API]: {
     types: Object.values(config.businesses.types),
     endpoint: config.businesses.endpoint,
@@ -41,7 +42,7 @@ export const fetchBusinesses = () => ({
   }
 });
 
-export const fetchBusiness = (id) => ({
+const fetchBusiness = (id) => ({
   [CALL_API]: {
     types: Object.keys(config.business.types),
     endpoint: `${config.business.endpoint}/${id}`,
@@ -50,7 +51,7 @@ export const fetchBusiness = (id) => ({
   }
 });
 
-export const fetchReviews = (business) => ({
+const fetchReviews = (business) => ({
   [CALL_API]: {
     types: Object.keys(config.reviews.types),
     endpoint: `${config.reviews.endpoint}?business=${business}`,
@@ -59,3 +60,18 @@ export const fetchReviews = (business) => ({
   }
 }); 
 
+export const mdtpList = dispatch =>
+  bindActionCreators(
+    {
+      fetchBusinesses
+    },
+    dispatch
+  )
+
+export const mdtpDetails = dispatch => 
+  bindActionCreators(
+    {
+      fetchBusiness
+    },
+    dispatch
+  )

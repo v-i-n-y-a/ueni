@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link, withRouter } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import store from './../store';
 
@@ -11,11 +11,10 @@ class App extends Component {
 
     render() {
         return (
-            <div className="app">
+            <main className="app">
                 <Route exact path="/" component={List} />
-                <Route exact path="/businesses" component={List} />
-                <Route exact path="/businesses/:id" component={Details} />
-            </div>
+                <Route exact path="/details/:id" component={Details} />
+            </main>
         );
     }
 }

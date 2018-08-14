@@ -86,86 +86,6 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./app/actions/index.js":
-/*!******************************!*\
-  !*** ./app/actions/index.js ***!
-  \******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.fetchReviews = exports.fetchBusiness = exports.fetchBusinesses = exports.config = undefined;
-
-var _reduxApiMiddleware = __webpack_require__(/*! redux-api-middleware */ "./node_modules/redux-api-middleware/lib/index.js");
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var API_URL = 'http://localhost:8080/api';
-
-var config = exports.config = {
-  businesses: {
-    types: {
-      FETCH: 'FETCH_BUSINESSES',
-      FETCH_SUCCESS: 'FETCH_BUSINESSES_SUCCESS',
-      FETCH_FAILURE: 'FETCH_BUSINESSES_FAILURE'
-    },
-    endpoint: API_URL + '/businesses'
-  },
-
-  business: {
-    types: {
-      FETCH: 'FETCH_BUSINESS',
-      FETCH_SUCCESS: 'FETCH_BUSINESS_SUCCESS',
-      FETCH_FAILURE: 'FETCH_BUSINESS_FAILURE'
-    },
-    endpoint: API_URL + '/businesses/'
-  },
-
-  reviews: {
-    types: {
-      FETCH: 'FETCH_REVIEWS',
-      FETCH_SUCCESS: 'FETCH_REVIEWS_SUCCESS',
-      FETCH_FAILURE: 'FETCH_REVIEWS_FAILURE'
-
-    },
-    endpoint: API_URL + '/reviews/'
-  }
-
-};
-
-var fetchBusinesses = exports.fetchBusinesses = function fetchBusinesses() {
-  return _defineProperty({}, _reduxApiMiddleware.CALL_API, {
-    types: Object.values(config.businesses.types),
-    endpoint: config.businesses.endpoint,
-    method: 'GET'
-  });
-};
-
-var fetchBusiness = exports.fetchBusiness = function fetchBusiness(id) {
-  return _defineProperty({}, _reduxApiMiddleware.CALL_API, {
-    types: Object.keys(config.business.types),
-    endpoint: config.business.endpoint + '/' + id,
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' }
-  });
-};
-
-var fetchReviews = exports.fetchReviews = function fetchReviews(business) {
-  return _defineProperty({}, _reduxApiMiddleware.CALL_API, {
-    types: Object.keys(config.reviews.types),
-    endpoint: config.reviews.endpoint + '?business=' + business,
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' }
-  });
-};
-
-/***/ }),
-
 /***/ "./app/app.jsx":
 /*!*********************!*\
   !*** ./app/app.jsx ***!
@@ -270,11 +190,10 @@ var App = function (_Component) {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
-                'div',
+                'main',
                 { className: 'app' },
                 _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _List2.default }),
-                _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/businesses', component: _List2.default }),
-                _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/businesses/:id', component: _Details2.default })
+                _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/details/:id', component: _Details2.default })
             );
         }
     }]);
@@ -304,6 +223,12 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _actions = __webpack_require__(/*! ./actions */ "./app/pages/actions.js");
+
+var _selectors = __webpack_require__(/*! ./selectors */ "./app/pages/selectors.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Details = function Details(props) {
@@ -314,7 +239,7 @@ var Details = function Details(props) {
   );
 };
 
-exports.default = Details;
+exports.default = (0, _reactRedux.connect)(_selectors.mstpDetails, _actions.mdtpDetails)(Details);
 
 /***/ }),
 
@@ -332,21 +257,267 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _selectors = __webpack_require__(/*! ./selectors */ "./app/pages/selectors.js");
+
+var _actions = __webpack_require__(/*! ./actions */ "./app/pages/actions.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var List = function List(props) {
-  return _react2.default.createElement(
-    'div',
-    null,
-    'List'
-  );
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var List = function (_Component) {
+  _inherits(List, _Component);
+
+  function List() {
+    _classCallCheck(this, List);
+
+    return _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).apply(this, arguments));
+  }
+
+  _createClass(List, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      //console.log(this.props)
+      var _props = this.props,
+          loading = _props.businesses.loading,
+          fetchBusinesses = _props.fetchBusinesses;
+
+      if (!loading) fetchBusinesses();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _props$businesses = this.props.businesses,
+          loading = _props$businesses.loading,
+          data = _props$businesses.data,
+          error = _props$businesses.error;
+
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'header',
+          null,
+          _react2.default.createElement(
+            'div',
+            { className: 'logo' },
+            '1'
+          ),
+          'SELECT YOUR BUSINESS'
+        ),
+        _react2.default.createElement(
+          'nav',
+          null,
+          _react2.default.createElement(
+            'div',
+            null,
+            'Sort: A-Z'
+          ),
+          _react2.default.createElement(
+            'div',
+            null,
+            'Category: ',
+            _react2.default.createElement('select', null)
+          )
+        ),
+        _react2.default.createElement(
+          'section',
+          null,
+          data.map(function (item) {
+            return _react2.default.createElement(
+              'div',
+              { key: item.id },
+              _react2.default.createElement(
+                'div',
+                { className: 'card-image' },
+                _react2.default.createElement('img', { src: item.imageUrl, alt: item.name })
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'card-body' },
+                _react2.default.createElement(
+                  'h2',
+                  null,
+                  item.name
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'card-address' },
+                  item.city,
+                  ', ',
+                  item.country
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'card-description' },
+                  item.description
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'card-details-link' },
+                  _react2.default.createElement(
+                    _reactRouterDom.Link,
+                    { to: '/details/' + item.id },
+                    'Continue'
+                  )
+                )
+              )
+            );
+          })
+        )
+      );
+    }
+  }]);
+
+  return List;
+}(_react.Component);
+
+exports.default = (0, _reactRedux.connect)(_selectors.mstpList, _actions.mdtpList)(List);
+
+/***/ }),
+
+/***/ "./app/pages/actions.js":
+/*!******************************!*\
+  !*** ./app/pages/actions.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.mdtpDetails = exports.mdtpList = exports.config = undefined;
+
+var _reduxApiMiddleware = __webpack_require__(/*! redux-api-middleware */ "./node_modules/redux-api-middleware/lib/index.js");
+
+var _redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/index.js");
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var API_URL = 'http://localhost:8080/api';
+
+var config = exports.config = {
+  businesses: {
+    types: {
+      FETCH: 'FETCH_BUSINESSES',
+      FETCH_SUCCESS: 'FETCH_BUSINESSES_SUCCESS',
+      FETCH_FAILURE: 'FETCH_BUSINESSES_FAILURE'
+    },
+    endpoint: API_URL + '/businesses'
+  },
+
+  business: {
+    types: {
+      FETCH: 'FETCH_BUSINESS',
+      FETCH_SUCCESS: 'FETCH_BUSINESS_SUCCESS',
+      FETCH_FAILURE: 'FETCH_BUSINESS_FAILURE'
+    },
+    endpoint: API_URL + '/businesses/'
+  },
+
+  reviews: {
+    types: {
+      FETCH: 'FETCH_REVIEWS',
+      FETCH_SUCCESS: 'FETCH_REVIEWS_SUCCESS',
+      FETCH_FAILURE: 'FETCH_REVIEWS_FAILURE'
+
+    },
+    endpoint: API_URL + '/reviews/'
+  }
+
 };
 
-exports.default = List;
+var fetchBusinesses = function fetchBusinesses() {
+  return _defineProperty({}, _reduxApiMiddleware.CALL_API, {
+    types: Object.values(config.businesses.types),
+    endpoint: config.businesses.endpoint,
+    method: 'GET'
+  });
+};
+
+var fetchBusiness = function fetchBusiness(id) {
+  return _defineProperty({}, _reduxApiMiddleware.CALL_API, {
+    types: Object.keys(config.business.types),
+    endpoint: config.business.endpoint + '/' + id,
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  });
+};
+
+var fetchReviews = function fetchReviews(business) {
+  return _defineProperty({}, _reduxApiMiddleware.CALL_API, {
+    types: Object.keys(config.reviews.types),
+    endpoint: config.reviews.endpoint + '?business=' + business,
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  });
+};
+
+var mdtpList = exports.mdtpList = function mdtpList(dispatch) {
+  return (0, _redux.bindActionCreators)({
+    fetchBusinesses: fetchBusinesses
+  }, dispatch);
+};
+
+var mdtpDetails = exports.mdtpDetails = function mdtpDetails(dispatch) {
+  return (0, _redux.bindActionCreators)({
+    fetchBusiness: fetchBusiness
+  }, dispatch);
+};
+
+/***/ }),
+
+/***/ "./app/pages/selectors.js":
+/*!********************************!*\
+  !*** ./app/pages/selectors.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.mstpReviews = exports.mstpList = undefined;
+
+var _reselect = __webpack_require__(/*! reselect */ "./node_modules/reselect/lib/index.js");
+
+var _property = __webpack_require__(/*! lodash/property */ "./node_modules/lodash/property.js");
+
+var _property2 = _interopRequireDefault(_property);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var getBusinesses = (0, _property2.default)('businesses');
+
+var mstpList = exports.mstpList = (0, _reselect.createSelector)(getBusinesses, function (businesses) {
+  return { businesses: businesses };
+});
+
+var getReviews = (0, _property2.default)('reviews.data');
+
+var mstpReviews = exports.mstpReviews = (0, _reselect.createSelector)(getReviews, function (reviews) {
+  return { reviews: reviews };
+});
 
 /***/ }),
 
@@ -366,9 +537,13 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _actions = __webpack_require__(/*! ../actions/ */ "./app/actions/index.js");
+var _actions = __webpack_require__(/*! ../pages/actions.js */ "./app/pages/actions.js");
 
 var _keyBy = __webpack_require__(/*! lodash/keyBy */ "./node_modules/lodash/keyBy.js");
+
+var _keyBy2 = _interopRequireDefault(_keyBy);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -386,13 +561,13 @@ function businessReducer() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
     var action = arguments[1];
 
-    console.log(action);
+    console.log('action', action);
     switch (action.type) {
-        case listTypes.FETCH:
+        case listTypes.FETCH_SUCCESS:
             return _extends({}, state, {
-                data: _extends({}, action.reviews),
-                dataById: (0, _keyBy.keyBy)(action.businesses, 'id'),
-                loading: true,
+                data: action.payload.slice(),
+                dataById: (0, _keyBy2.default)(action.businesses, 'id'),
+                loading: false,
                 error: null
             });
         case listTypes.FETCH_FAILURE:
@@ -404,11 +579,11 @@ function businessReducer() {
                     loading: false
                 });
             }
-        case listTypes.FETCH_SUCCESS:
-        case objectTypes.FETCH_SUCCESS:
+        case listTypes.FETCH:
+        case objectTypes.FETCH:
             return _extends({}, state, {
                 error: null,
-                loading: false
+                loading: true
             });
         case objectTypes.FETCH:
             return _extends({}, state, {
@@ -474,7 +649,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _actions = __webpack_require__(/*! ../actions/ */ "./app/actions/index.js");
+var _actions = __webpack_require__(/*! ../pages/actions.js */ "./app/pages/actions.js");
 
 var initialState = {
     data: {},
@@ -482,17 +657,17 @@ var initialState = {
     loading: false
 };
 
-var types = _actions.config.reviews.type;
+var types = _actions.config.reviews.types;
 
 function reviewsReducer() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
     var action = arguments[1];
 
-    console.log(action);
+    console.log('action', action);
     switch (action.type) {
         case types.FETCH:
             return _extends({}, state, {
-                data: _extends({}, action.reviews),
+                data: action.payload.slice(),
                 loading: true,
                 error: null
             });
@@ -48237,6 +48412,142 @@ if (hadRuntime) {
   (function() { return this })() || Function("return this")()
 );
 
+
+/***/ }),
+
+/***/ "./node_modules/reselect/lib/index.js":
+/*!********************************************!*\
+  !*** ./node_modules/reselect/lib/index.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.defaultMemoize = defaultMemoize;
+exports.createSelectorCreator = createSelectorCreator;
+exports.createStructuredSelector = createStructuredSelector;
+function defaultEqualityCheck(a, b) {
+  return a === b;
+}
+
+function areArgumentsShallowlyEqual(equalityCheck, prev, next) {
+  if (prev === null || next === null || prev.length !== next.length) {
+    return false;
+  }
+
+  // Do this in a for loop (and not a `forEach` or an `every`) so we can determine equality as fast as possible.
+  var length = prev.length;
+  for (var i = 0; i < length; i++) {
+    if (!equalityCheck(prev[i], next[i])) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function defaultMemoize(func) {
+  var equalityCheck = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultEqualityCheck;
+
+  var lastArgs = null;
+  var lastResult = null;
+  // we reference arguments instead of spreading them for performance reasons
+  return function () {
+    if (!areArgumentsShallowlyEqual(equalityCheck, lastArgs, arguments)) {
+      // apply arguments instead of spreading for performance.
+      lastResult = func.apply(null, arguments);
+    }
+
+    lastArgs = arguments;
+    return lastResult;
+  };
+}
+
+function getDependencies(funcs) {
+  var dependencies = Array.isArray(funcs[0]) ? funcs[0] : funcs;
+
+  if (!dependencies.every(function (dep) {
+    return typeof dep === 'function';
+  })) {
+    var dependencyTypes = dependencies.map(function (dep) {
+      return typeof dep;
+    }).join(', ');
+    throw new Error('Selector creators expect all input-selectors to be functions, ' + ('instead received the following types: [' + dependencyTypes + ']'));
+  }
+
+  return dependencies;
+}
+
+function createSelectorCreator(memoize) {
+  for (var _len = arguments.length, memoizeOptions = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    memoizeOptions[_key - 1] = arguments[_key];
+  }
+
+  return function () {
+    for (var _len2 = arguments.length, funcs = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      funcs[_key2] = arguments[_key2];
+    }
+
+    var recomputations = 0;
+    var resultFunc = funcs.pop();
+    var dependencies = getDependencies(funcs);
+
+    var memoizedResultFunc = memoize.apply(undefined, [function () {
+      recomputations++;
+      // apply arguments instead of spreading for performance.
+      return resultFunc.apply(null, arguments);
+    }].concat(memoizeOptions));
+
+    // If a selector is called with the exact same arguments we don't need to traverse our dependencies again.
+    var selector = defaultMemoize(function () {
+      var params = [];
+      var length = dependencies.length;
+
+      for (var i = 0; i < length; i++) {
+        // apply arguments instead of spreading and mutate a local list of params for performance.
+        params.push(dependencies[i].apply(null, arguments));
+      }
+
+      // apply arguments instead of spreading for performance.
+      return memoizedResultFunc.apply(null, params);
+    });
+
+    selector.resultFunc = resultFunc;
+    selector.recomputations = function () {
+      return recomputations;
+    };
+    selector.resetRecomputations = function () {
+      return recomputations = 0;
+    };
+    return selector;
+  };
+}
+
+var createSelector = exports.createSelector = createSelectorCreator(defaultMemoize);
+
+function createStructuredSelector(selectors) {
+  var selectorCreator = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : createSelector;
+
+  if (typeof selectors !== 'object') {
+    throw new Error('createStructuredSelector expects first argument to be an object ' + ('where each property is a selector, instead received a ' + typeof selectors));
+  }
+  var objectKeys = Object.keys(selectors);
+  return selectorCreator(objectKeys.map(function (key) {
+    return selectors[key];
+  }), function () {
+    for (var _len3 = arguments.length, values = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+      values[_key3] = arguments[_key3];
+    }
+
+    return values.reduce(function (composition, value, index) {
+      composition[objectKeys[index]] = value;
+      return composition;
+    }, {});
+  });
+}
 
 /***/ }),
 

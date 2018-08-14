@@ -32,11 +32,7 @@ module.exports = function (app) {
         res.sendFile(path.resolve(__dirname, './../index.html'));
     });
     
-    app.get('/businesses', function (req, res) {
-        res.sendFile(path.resolve(__dirname, './../index.html'));
-    });
-    
-    app.get('/businesses/:id', function (req, res) {
+    app.get('/details/:id', function (req, res) {
         res.sendFile(path.resolve(__dirname, './../index.html'));
     });
 

@@ -1,4 +1,4 @@
-import { config } from '../actions/' 
+import { config } from '../pages/actions.js' 
 
 const initialState = {
   data: {},
@@ -6,17 +6,15 @@ const initialState = {
   loading: false
 };
 
-const types = config.reviews.type
+const types = config.reviews.types
 
 function reviewsReducer (state = initialState, action) {
-    console.log(action)
+    console.log('action', action)
     switch (action.type) {
         case types.FETCH:
             return {
                 ...state,
-                data: {
-                    ...action.reviews
-                },
+                data: action.payload.slice(),
                 loading: true,
                 error: null
             };

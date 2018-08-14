@@ -1,5 +1,5 @@
-import { config } from '../actions/' 
-import { keyBy } from 'lodash/keyBy'
+import { config } from '../pages/actions.js' 
+import keyBy from 'lodash/keyBy'
 
 const initialState = {
   data: [],
@@ -12,16 +12,14 @@ const listTypes = config.businesses.types
 const objectTypes = config.business.types
 
 function businessReducer (state = initialState, action) {
-  console.log(action)
+  console.log('action', action)
   switch (action.type) {
-        case listTypes.FETCH:
+        case listTypes.FETCH_SUCCESS:
             return {
                 ...state,
-                data: {
-                    ...action.reviews
-                },
+                data: action.payload.slice(),
                 dataById: keyBy(action.businesses, 'id'),
-                loading: true,
+                loading: false,
                 error: null
             };
         case listTypes.FETCH_FAILURE:
@@ -33,12 +31,12 @@ function businessReducer (state = initialState, action) {
                 loading: false
             };
         }
-        case listTypes.FETCH_SUCCESS:
-        case objectTypes.FETCH_SUCCESS:
+        case listTypes.FETCH:
+        case objectTypes.FETCH:
             return {
                 ...state,
                 error: null,
-                loading: false
+                loading: true
             };
         case objectTypes.FETCH:
             return {
