@@ -1,19 +1,35 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { mstpList} from './selectors'
 import { mdtpList } from './actions'
 
+import { Link } from 'react-router-dom'
+import Filter from '../components/Filter.jsx'
+
 class List extends Component {
+  
+  constructor(props) {
+    super(props)
+    this.state = {
+      categories: []
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.categories !== this.props.categories) 
+      this.setState({ categories: nextProps.categories })
+  }
 
   componentWillMount() {
     //console.log(this.props)
-    const { businesses: { loading }, fetchBusinesses } = this.props
+    const { businesses: { loading }, fetchBusinesses, categories } = this.props
     if (!loading) fetchBusinesses()
+    this.setState({ categories })
   }
 
   render() {
     const { businesses: { loading, data, error } } = this.props
+    const { categories } = this.state
     return (
       <div>
         <header>
@@ -22,7 +38,9 @@ class List extends Component {
         </header>
         <nav>
           <div>Sort: A-Z</div>
-          <div>Category: <select></select></div>
+          <div>
+            Category: <Filter data={categories} onChange={this.filterList} placeholder="All"/>
+          </div>
         </nav>
         <section>
           {data.map(item => 

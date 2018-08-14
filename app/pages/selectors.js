@@ -5,7 +5,7 @@ const getBusinesses = property('businesses');
 
 export const mstpList = createSelector(
   getBusinesses,
-  businesses => ({ businesses })
+  businesses => ({ businesses, categories: businesses.data.map( item =>  item.category ) })
 )
 
 const getReviews = property('reviews.data')

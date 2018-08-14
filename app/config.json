@@ -15,6 +15,6 @@
     "sass": ["./app/styles/*.scss", "./app/styles/**/*.scss", "./app/styles/**/**/*.scss"],
     "build": "./build",
     "vendor": "./app/vendor",
-    "styles": "./build/styles.css",
+    "styles": "./build/styles.css"
   }
 }
