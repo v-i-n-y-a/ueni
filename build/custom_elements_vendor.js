@@ -81,45 +81,19 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js":
-/*!************************************************************************************!*\
-  !*** ./node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js ***!
-  \************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/**
-@license @nocompile
-Copyright (c) 2018 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
-*/
-(function () {
-  'use strict';
-
-  (function(){if(void 0===window.Reflect||void 0===window.customElements||window.customElements.hasOwnProperty('polyfillWrapFlushCallback'))return;const a=HTMLElement;window.HTMLElement=function(){return Reflect.construct(a,[],this.constructor)},HTMLElement.prototype=a.prototype,HTMLElement.prototype.constructor=HTMLElement,Object.setPrototypeOf(HTMLElement,a);})();
-
-}());
-
-
-/***/ }),
-
-/***/ 5:
+/***/ 2:
 /*!******************************************************************************************!*\
   !*** multi ./node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js ***!
   \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/olga/test/ueni/node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js */"./node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js");
+!(function webpackMissingModule() { var e = new Error("Cannot find module '/Users/olga/test/ueni/node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
 
 
 /***/ })

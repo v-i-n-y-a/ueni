@@ -19,14 +19,11 @@ const common = {
             'react-dom',
             'react-router-dom',
             'react-redux',
-            'react-intl',
             'redux',
             'redux-promise',
             'redux-thunk',
-            'redux-logger'
-        ],
-        custom_elements_vendor: [
-            `${PATHS.modules}/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js`
+            'redux-logger',
+            'redux-api-middleware'
         ]
     },
     resolve: {

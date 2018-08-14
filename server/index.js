@@ -40,7 +40,7 @@ module.exports = function (app) {
         res.sendFile(path.resolve(__dirname, './../index.html'));
     });
 
-    app.get('/api/usinesses', getBusinesses);
+    app.get('/api/businesses', getBusinesses);
 
     app.get('/api/businesses/:id', getBusinesses);
 
