@@ -25,15 +25,16 @@ function businessReducer (state = initialState, action) {
                 error: null
             };
         case listTypes.FETCH_FAILURE:
-        case objectTypes.FETCH_FAILURE:
+        case objectTypes.FETCH_FAILURE: {
             const error = action.payload.data || { message: action.payload.message };
             return {
                 ...state,
                 error:  error,
                 loading: false
             };
+        }
         case listTypes.FETCH_SUCCESS:
-        case listTypes.FETCH_SUCCESS:
+        case objectTypes.FETCH_SUCCESS:
             return {
                 ...state,
                 error: null,
@@ -43,7 +44,7 @@ function businessReducer (state = initialState, action) {
             return {
               ...state,
               dataById: {
-                ...dataById,
+                ...state.dataById,
                 [action.id]: {...action}
               }, 
               loading: true,

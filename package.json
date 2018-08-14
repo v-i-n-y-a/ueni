@@ -5,9 +5,6 @@
     "name": "ogolovko"
   },
   "config": {
-    "ghooks": {
-      "pre-commit": "npm run test && npm run eslint"
-    }
   },
   "dependencies": {
     "chalk": "^1.1.3",

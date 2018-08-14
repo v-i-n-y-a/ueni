@@ -1,5 +1,4 @@
 import { config } from '../actions/' 
-import { keyBy } from 'lodash/keyBy'
 
 const initialState = {
   data: {},
@@ -21,13 +20,14 @@ function reviewsReducer (state = initialState, action) {
                 loading: true,
                 error: null
             };
-        case types.FETCH_FAILURE:
+        case types.FETCH_FAILURE: {
             const error = action.payload.data || { message: action.payload.message };
             return {
                 ...state,
                 error:  error,
                 loading: false
             };
+        }
         case types.FETCH_SUCCESS:
             return {
                 ...state,

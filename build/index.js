@@ -397,20 +397,22 @@ function businessReducer() {
             });
         case listTypes.FETCH_FAILURE:
         case objectTypes.FETCH_FAILURE:
-            var error = action.payload.data || { message: action.payload.message };
-            return _extends({}, state, {
-                error: error,
-                loading: false
-            });
+            {
+                var error = action.payload.data || { message: action.payload.message };
+                return _extends({}, state, {
+                    error: error,
+                    loading: false
+                });
+            }
         case listTypes.FETCH_SUCCESS:
-        case listTypes.FETCH_SUCCESS:
+        case objectTypes.FETCH_SUCCESS:
             return _extends({}, state, {
                 error: null,
                 loading: false
             });
         case objectTypes.FETCH:
             return _extends({}, state, {
-                dataById: _extends({}, dataById, _defineProperty({}, action.id, _extends({}, action))),
+                dataById: _extends({}, state.dataById, _defineProperty({}, action.id, _extends({}, action))),
                 loading: true,
                 error: null
             });
@@ -474,8 +476,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _actions = __webpack_require__(/*! ../actions/ */ "./app/actions/index.js");
 
-var _keyBy = __webpack_require__(/*! lodash/keyBy */ "./node_modules/lodash/keyBy.js");
-
 var initialState = {
     data: {},
     error: null,
@@ -497,11 +497,13 @@ function reviewsReducer() {
                 error: null
             });
         case types.FETCH_FAILURE:
-            var error = action.payload.data || { message: action.payload.message };
-            return _extends({}, state, {
-                error: error,
-                loading: false
-            });
+            {
+                var error = action.payload.data || { message: action.payload.message };
+                return _extends({}, state, {
+                    error: error,
+                    loading: false
+                });
+            }
         case types.FETCH_SUCCESS:
             return _extends({}, state, {
                 error: null,
