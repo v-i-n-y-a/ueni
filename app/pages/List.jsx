@@ -101,10 +101,9 @@ class List extends Component {
   render() {
     const { businesses: { loading, data, error }, categories, classes } = this.props
     const { list, order } = this.state
-    console.log('loading', loading, 'error', error)
     return (
-      <div>
-        <nav className={classes.nav}>
+      <Grid container className={classes.root} spacing={16}>
+        <Grid item xs={12} className={classes.nav}>
           <Header title="SELECT YOUR BUSINESS" logo="1" />
           <div className={classes.toolBar}>
             <div className={classes.tool}>
@@ -114,15 +113,15 @@ class List extends Component {
               <Filter title="Category" data={categories} onChange={this.filterList(data)} placeholder="All"/>
             </div>
           </div>
-        </nav>
-        <Grid container className={classes.root} spacing={16}>
-          {list.map(item => 
-            <Card key={item.id} item={item}/>
-          )}
         </Grid>
-        { error && <div className="error">{error.message}</div> }
-        { loading && <div>loading...</div> }
-      </div>
+        {list.map(item => 
+          <Grid item xs={6}>
+            <Card key={item.id} item={item}/>
+          </Grid>
+          )}
+        { error && <Grid item xs={12} className="error">{error.message}</Grid> }
+        { loading && <Grid item xs={12}>loading...</Grid> }
+      </Grid>
     )
     
   }

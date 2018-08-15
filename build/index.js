@@ -867,13 +867,12 @@ var List = function (_Component) {
           list = _state2.list,
           order = _state2.order;
 
-      console.log('loading', loading, 'error', error);
       return _react2.default.createElement(
-        'div',
-        null,
+        _Grid2.default,
+        { container: true, className: classes.root, spacing: 16 },
         _react2.default.createElement(
-          'nav',
-          { className: classes.nav },
+          _Grid2.default,
+          { item: true, xs: 12, className: classes.nav },
           _react2.default.createElement(_Header2.default, { title: 'SELECT YOUR BUSINESS', logo: '1' }),
           _react2.default.createElement(
             'div',
@@ -890,21 +889,21 @@ var List = function (_Component) {
             )
           )
         ),
-        _react2.default.createElement(
-          _Grid2.default,
-          { container: true, className: classes.root, spacing: 16 },
-          list.map(function (item) {
-            return _react2.default.createElement(_Card2.default, { key: item.id, item: item });
-          })
-        ),
+        list.map(function (item) {
+          return _react2.default.createElement(
+            _Grid2.default,
+            { item: true, xs: 6 },
+            _react2.default.createElement(_Card2.default, { key: item.id, item: item })
+          );
+        }),
         error && _react2.default.createElement(
-          'div',
-          { className: 'error' },
+          _Grid2.default,
+          { item: true, xs: 12, className: 'error' },
           error.message
         ),
         loading && _react2.default.createElement(
-          'div',
-          null,
+          _Grid2.default,
+          { item: true, xs: 12 },
           'loading...'
         )
       );
