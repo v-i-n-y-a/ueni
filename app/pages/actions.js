@@ -44,16 +44,17 @@ const fetchBusinesses = () => ({
 
 const fetchBusiness = (id) => ({
   [CALL_API]: {
-    types: Object.keys(config.business.types),
-    endpoint: `${config.business.endpoint}/${id}`,
+    types: Object.values(config.business.types).map( type => ({ type, meta: { id } }) ),
+    endpoint: `${config.business.endpoint}${id}`,
     method: 'GET',
-    headers: { 'Content-Type': 'application/json' }
+    headers: { 'Content-Type': 'application/json' },
+    options: { id }
   }
 });
 
 const fetchReviews = (business) => ({
   [CALL_API]: {
-    types: Object.keys(config.reviews.types),
+    types: Object.values(config.reviews.types),
     endpoint: `${config.reviews.endpoint}?business=${business}`,
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }
@@ -71,6 +72,7 @@ export const mdtpList = dispatch =>
 export const mdtpDetails = dispatch => 
   bindActionCreators(
     {
+      fetchReviews,
       fetchBusiness
     },
     dispatch

@@ -1,5 +1,6 @@
 import { config } from '../pages/actions.js' 
 import keyBy from 'lodash/keyBy'
+import isEmpty from 'lodash/isEmpty'
 
 const initialState = {
   data: [],
@@ -12,7 +13,6 @@ const listTypes = config.businesses.types
 const objectTypes = config.business.types
 
 function businessReducer (state = initialState, action) {
-  console.log('action', action)
   switch (action.type) {
         case listTypes.FETCH_SUCCESS:
             return {
@@ -22,12 +22,17 @@ function businessReducer (state = initialState, action) {
                 loading: false,
                 error: null
             };
-        case listTypes.FETCH_FAILURE:
-        case objectTypes.FETCH_FAILURE: {
-            const error = action.payload.data || { message: action.payload.message };
+        case listTypes.FETCH_FAILURE: {
             return {
                 ...state,
-                error:  error,
+                error:  action.payload,
+                loading: false
+            };
+        }
+        case objectTypes.FETCH_FAILURE: {
+            return {
+                ...state,
+                error:  action.payload,
                 loading: false
             };
         }
@@ -38,14 +43,17 @@ function businessReducer (state = initialState, action) {
                 error: null,
                 loading: true
             };
-        case objectTypes.FETCH:
+        case objectTypes.FETCH_SUCCESS:
+            const id =  action.meta.id
+            const dataById = {...state.dataById}
+            if (isEmpty(action.payload)) {
+              if (id in state.dataById) delete dataById[id]
+            } else
+                dataById[id] = action.payload
             return {
               ...state,
-              dataById: {
-                ...state.dataById,
-                [action.id]: {...action}
-              }, 
-              loading: true,
+              dataById, 
+              loading: false,
               error: null
             }
         default:

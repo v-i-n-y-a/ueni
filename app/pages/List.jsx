@@ -71,6 +71,8 @@ class List extends Component {
     return (
       <div>
         <Header title="SELECT YOUR BUSINESS" logo="1" />
+        { error && <div className="error">{error.message}</div> }
+        { loading && <div>loading...</div> }
         <nav>
           <Sort onChange={this.sortList} order={order} />
           <div>

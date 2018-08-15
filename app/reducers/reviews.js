@@ -1,4 +1,6 @@
 import { config } from '../pages/actions.js' 
+import { normalize, schema, arrayOf } from 'normalizr';
+
 
 const initialState = {
   data: {},
@@ -11,26 +13,34 @@ const types = config.reviews.types
 function reviewsReducer (state = initialState, action) {
     console.log('action', action)
     switch (action.type) {
-        case types.FETCH:
+        case types.FETCH_SUCCESS: {
+            const review = new schema.Entity('review', {}, { 
+              idAttribute: 'business_id', 
+              mergeStrategy: (entityA, entityB) => ({
+                score: (entityA.score + entityB.score)/2
+              })
+            })
+            const reviewList = new schema.Array(review)
+            const reviews = normalize(action.payload, reviewList)
             return {
                 ...state,
-                data: action.payload.slice(),
-                loading: true,
+                data: { ...state.data, ...reviews.entities.review },
+                loading: false,
                 error: null
             };
+        }
         case types.FETCH_FAILURE: {
-            const error = action.payload.data || { message: action.payload.message };
             return {
                 ...state,
-                error:  error,
+                error:  action.payload,
                 loading: false
             };
         }
-        case types.FETCH_SUCCESS:
+        case types.FETCH:
             return {
                 ...state,
                 error: null,
-                loading: false
+                loading: true
             };
         default:
             return state;

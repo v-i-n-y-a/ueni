@@ -27,7 +27,8 @@
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
-    "@material-ui/core": "latest"
+    "@material-ui/core": "latest",
+    "normalizr": "3.2.4"
   },
   "description": "UENI Test Project",
   "devDependencies": {

@@ -10,31 +10,25 @@ module.exports = function(grunt) {
         'cache-busting': {
             libsJs: {
                 replace: ['./index.html'],
-                replacement: 'libs.js',
+                replacement: '/build/libs.js',
                 file: './build/libs.js',
                 cleanup: true
             },
             vendorJs: {
                 replace: ['./index.html'],
-                replacement: 'vendor.js',
+                replacement: '/build/vendor.js',
                 file: './build/vendor.js',
-                cleanup: true
-            },
-            web_components_vendorJs: {
-                replace: ['./index.html'],
-                replacement: 'web_components_vendor.js',
-                file: './build/web_components_vendor.js',
                 cleanup: true
             },
             indexJs: {
                 replace: ['./index.html'],
-                replacement: 'index.js',
+                replacement: '/build/index.js',
                 file: './build/index.js',
                 cleanup: true
             },
             css: {
                 replace: ['./index.html'],
-                replacement: 'styles.min.css',
+                replacement: '/build/styles.min.css',
                 file: './build/styles.min.css',
                 cleanup: true
             }
