@@ -1,4 +1,4 @@
-import { CALL_API } from 'redux-api-middleware';
+import { CALL_API } from 'redux-api-middleware'
 import { bindActionCreators } from 'redux'
 
 const API_URL = 'http://localhost:8080/api'
@@ -27,39 +27,37 @@ export const config = {
       FETCH: 'FETCH_REVIEWS',
       FETCH_SUCCESS: 'FETCH_REVIEWS_SUCCESS',
       FETCH_FAILURE: 'FETCH_REVIEWS_FAILURE'
-
     },
-    endpoint:  `${API_URL}/reviews/`
+    endpoint: `${API_URL}/reviews/`
   }
-
 }
 
 const fetchBusinesses = () => ({
   [CALL_API]: {
     types: Object.values(config.businesses.types),
     endpoint: config.businesses.endpoint,
-    method: 'GET',
+    method: 'GET'
   }
-});
+})
 
-const fetchBusiness = (id) => ({
+const fetchBusiness = id => ({
   [CALL_API]: {
-    types: Object.values(config.business.types).map( type => ({ type, meta: { id } }) ),
+    types: Object.values(config.business.types).map(type => ({ type, meta: { id } })),
     endpoint: `${config.business.endpoint}${id}`,
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
     options: { id }
   }
-});
+})
 
-const fetchReviews = (business) => ({
+const fetchReviews = business => ({
   [CALL_API]: {
     types: Object.values(config.reviews.types),
     endpoint: `${config.reviews.endpoint}?business=${business}`,
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }
   }
-}); 
+})
 
 export const mdtpList = dispatch =>
   bindActionCreators(
@@ -69,7 +67,7 @@ export const mdtpList = dispatch =>
     dispatch
   )
 
-export const mdtpDetails = dispatch => 
+export const mdtpDetails = dispatch =>
   bindActionCreators(
     {
       fetchReviews,

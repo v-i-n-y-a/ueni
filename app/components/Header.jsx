@@ -1,7 +1,6 @@
 import React from 'react'
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
-
+import Typography from '@material-ui/core/Typography'
+import { withStyles } from '@material-ui/core/styles'
 
 const styles = {
   header: {
@@ -27,7 +26,9 @@ const Header = ({ logo, title, classes }) => (
     <div className={classes.logo}>
       <Typography variant="headline" component="h1">{logo}</Typography>
     </div>
-    <Typography className={classes.title} gutterBottom variant="headline" component="h1">{title}</Typography>
+    <Typography className={classes.title} gutterBottom variant="headline" component="h1">
+      {title}
+    </Typography>
   </header>
 )
 

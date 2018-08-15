@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
-import CardActions from '@material-ui/core/CardActions';
-import { withStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
+import Typography from '@material-ui/core/Typography'
+import CardActions from '@material-ui/core/CardActions'
+import { withStyles } from '@material-ui/core/styles'
 
 //Using material-ui framework for responsive
 const styles = {
@@ -14,14 +14,14 @@ const styles = {
     display: 'flex',
     flexDirection: 'row'
   },
-  
+
   location: {
     margin: '5px 0',
     fontStyle: 'italic'
   },
 
   description: {
-    fontStyle: 'italic',
+    fontStyle: 'italic'
   },
 
   media: {
@@ -46,13 +46,13 @@ const styles = {
 
   rating: {
     marginTop: 20,
-    fontStyle: 'italic',
+    fontStyle: 'italic'
   },
 
   category: {
-    fontStyle: 'italic',
+    fontStyle: 'italic'
   }
-};
+}
 
 //#TODO: truncate description by word if it's too big add ... at the end
 const BusinessCard = ({ item, classes }) => (
@@ -66,16 +66,16 @@ const BusinessCard = ({ item, classes }) => (
           {item.name}
         </Typography>
         <Typography component="p" className={classes.location}>
-            {item.city}, {item.country}
+          {item.city}, {item.country}
         </Typography>
         <Typography component="p" className={classes.description}>
-            {item.description}
+          {item.description}
         </Typography>
         <Typography component="p" className={classes.rating}>
-            Rating: {item.score}
+          Rating: {item.score}
         </Typography>
         <Typography component="p" className={classes.category}>
-            Category: {item.category}
+          Category: {item.category}
         </Typography>
       </CardContent>
       <CardActions>

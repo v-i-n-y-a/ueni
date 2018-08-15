@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { mstpList} from './selectors'
+import { mstpList } from './selectors'
 import { mdtpList } from './actions'
 
 import Filter from '../components/Filter.jsx'
@@ -8,14 +8,14 @@ import Sort from '../components/Sort.jsx'
 import Card from '../components/Card.jsx'
 import Header from '../components/Header.jsx'
 
-import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid'
+import { withStyles } from '@material-ui/core/styles'
 
 const styles = {
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
-  
+
   nav: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -32,10 +32,9 @@ const styles = {
     display: 'flex',
     marginLeft: 15
   }
-};
+}
 
 class List extends Component {
-  
   constructor(props) {
     super(props)
     this.state = {
@@ -68,16 +67,16 @@ class List extends Component {
       this.setState({ list: data, category: null })
       return
     }
-    const newList = data.filter( ({ category }) => category === option.value )
+    const newList = data.filter(({ category }) => category === option.value)
     this.setState({ list: newList, category: option.value })
   }
 
   sortList = order => {
-    if (!order) return 
+    if (!order) return
 
     const { list } = this.state
     if (list.length === 0) return
-    
+
     const sortMethod = {
       ASC: { lover: -1, higher: 1 },
       DESC: { lover: 1, higher: -1 }
@@ -103,20 +102,24 @@ class List extends Component {
               <Sort onChange={this.sortList} order={order} />
             </div>
             <div className={classes.tool}>
-              <Filter title="Category" data={categories} onChange={this.filterList(data)} placeholder="All"/>
+              <Filter
+                title="Category"
+                data={categories}
+                onChange={this.filterList(data)}
+                placeholder="All"
+              />
             </div>
           </div>
         </Grid>
-        {list.map(item => 
+        {list.map(item => (
           <Grid key={item.id} item xs={6}>
-            <Card item={item}/>
+            <Card item={item} />
           </Grid>
-          )}
-        { error && <Grid item xs={12} className="error">{error.message}</Grid> }
-        { loading && <Grid item xs={12}>loading...</Grid> }
+        ))}
+        {error && <Grid item xs={12} className="error">{error.message}</Grid>}
+        {loading && <Grid item xs={12}>loading...</Grid>}
       </Grid>
     )
-    
   }
 }
 

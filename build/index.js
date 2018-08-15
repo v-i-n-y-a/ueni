@@ -219,10 +219,9 @@ var styles = {
   category: {
     fontStyle: 'italic'
   }
-};
 
-//#TODO: truncate description by word if it's too big add ... at the end
-var BusinessCard = function BusinessCard(_ref) {
+  //#TODO: truncate description by word if it's too big add ... at the end
+};var BusinessCard = function BusinessCard(_ref) {
   var item = _ref.item,
       classes = _ref.classes;
   return _react2.default.createElement(
@@ -358,20 +357,15 @@ var styles = {
     color: '#3f51b5',
     paddingLeft: '10px'
   }
-};
 
-//#TODO: truncate description by word if it's too big add ... at the end
-var BusinessCard = function BusinessCard(_ref) {
+  //#TODO: truncate description by word if it's too big add ... at the end
+};var BusinessCard = function BusinessCard(_ref) {
   var item = _ref.item,
       classes = _ref.classes;
   return _react2.default.createElement(
     _Card2.default,
     { className: classes.card },
-    _react2.default.createElement(_CardMedia2.default, {
-      className: classes.media,
-      image: item.imageUrl,
-      title: item.name
-    }),
+    _react2.default.createElement(_CardMedia2.default, { className: classes.media, image: item.imageUrl, title: item.name }),
     _react2.default.createElement(
       _CardContent2.default,
       null,
@@ -681,7 +675,7 @@ var styles = exports.styles = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -718,27 +712,27 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 var App = function (_Component) {
-    _inherits(App, _Component);
+  _inherits(App, _Component);
 
-    function App() {
-        _classCallCheck(this, App);
+  function App() {
+    _classCallCheck(this, App);
 
-        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+  }
+
+  _createClass(App, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'main',
+        { className: 'app' },
+        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _List2.default }),
+        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/details/:id', component: _Details2.default })
+      );
     }
+  }]);
 
-    _createClass(App, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'main',
-                { className: 'app' },
-                _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _List2.default }),
-                _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/details/:id', component: _Details2.default })
-            );
-        }
-    }]);
-
-    return App;
+  return App;
 }(_react.Component);
 
 exports.default = (0, _reactRouterDom.withRouter)(App);
@@ -1039,7 +1033,12 @@ var List = function (_Component) {
             _react2.default.createElement(
               'div',
               { className: classes.tool },
-              _react2.default.createElement(_Filter2.default, { title: 'Category', data: categories, onChange: this.filterList(data), placeholder: 'All' })
+              _react2.default.createElement(_Filter2.default, {
+                title: 'Category',
+                data: categories,
+                onChange: this.filterList(data),
+                placeholder: 'All'
+              })
             )
           )
         ),
@@ -1118,11 +1117,9 @@ var config = exports.config = {
       FETCH: 'FETCH_REVIEWS',
       FETCH_SUCCESS: 'FETCH_REVIEWS_SUCCESS',
       FETCH_FAILURE: 'FETCH_REVIEWS_FAILURE'
-
     },
     endpoint: API_URL + '/reviews/'
   }
-
 };
 
 var fetchBusinesses = function fetchBusinesses() {
@@ -1202,7 +1199,8 @@ var mstpList = exports.mstpList = (0, _reselect.createSelector)(getBusinesses, f
   });
   categories.sort();
   return {
-    businesses: businesses, categories: categories
+    businesses: businesses,
+    categories: categories
   };
 });
 
@@ -1237,7 +1235,7 @@ var mstpDetails = exports.mstpDetails = (0, _reselect.createSelector)(getBusines
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -1255,67 +1253,67 @@ var _isEmpty2 = _interopRequireDefault(_isEmpty);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var initialState = {
-    data: [],
-    dataById: {},
-    error: null,
-    loading: false
+  data: [],
+  dataById: {},
+  error: null,
+  loading: false
 };
 
 var listTypes = _actions.config.businesses.types;
 var objectTypes = _actions.config.business.types;
 
 function businessReducer() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-    var action = arguments[1];
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
 
-    switch (action.type) {
-        case listTypes.FETCH_SUCCESS:
-            return _extends({}, state, {
-                data: action.payload.slice(),
-                dataById: (0, _keyBy2.default)(action.businesses, 'id'),
-                loading: false,
-                error: null
-            });
-        case listTypes.FETCH_FAILURE:
-            {
-                return _extends({}, state, {
-                    error: action.payload,
-                    loading: false
-                });
-            }
-        case objectTypes.FETCH_FAILURE:
-            {
-                return _extends({}, state, {
-                    error: action.payload,
-                    loading: false
-                });
-            }
-        case listTypes.FETCH:
-        case objectTypes.FETCH:
-            return _extends({}, state, {
-                error: null,
-                loading: true
-            });
-        case objectTypes.FETCH_SUCCESS:
-            {
-                var id = action.meta.id;
-                var dataById = _extends({}, state.dataById);
-                if ((0, _isEmpty2.default)(action.payload)) {
-                    if (id in state.dataById) {
-                        delete dataById[id];
-                    }
-                } else {
-                    dataById[id] = action.payload;
-                }
-                return _extends({}, state, {
-                    dataById: dataById,
-                    loading: false,
-                    error: null
-                });
-            }
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case listTypes.FETCH_SUCCESS:
+      return _extends({}, state, {
+        data: action.payload.slice(),
+        dataById: (0, _keyBy2.default)(action.businesses, 'id'),
+        loading: false,
+        error: null
+      });
+    case listTypes.FETCH_FAILURE:
+      {
+        return _extends({}, state, {
+          error: action.payload,
+          loading: false
+        });
+      }
+    case objectTypes.FETCH_FAILURE:
+      {
+        return _extends({}, state, {
+          error: action.payload,
+          loading: false
+        });
+      }
+    case listTypes.FETCH:
+    case objectTypes.FETCH:
+      return _extends({}, state, {
+        error: null,
+        loading: true
+      });
+    case objectTypes.FETCH_SUCCESS:
+      {
+        var id = action.meta.id;
+        var dataById = _extends({}, state.dataById);
+        if ((0, _isEmpty2.default)(action.payload)) {
+          if (id in state.dataById) {
+            delete dataById[id];
+          }
+        } else {
+          dataById[id] = action.payload;
+        }
+        return _extends({}, state, {
+          dataById: dataById,
+          loading: false,
+          error: null
+        });
+      }
+    default:
+      return state;
+  }
 }
 
 exports.default = businessReducer;
@@ -1333,7 +1331,7 @@ exports.default = businessReducer;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/index.js");
@@ -1349,8 +1347,8 @@ var _reviews2 = _interopRequireDefault(_reviews);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = (0, _redux.combineReducers)({
-    businesses: _business2.default,
-    reviews: _reviews2.default
+  businesses: _business2.default,
+  reviews: _reviews2.default
 });
 
 /***/ }),
@@ -1366,7 +1364,7 @@ exports.default = (0, _redux.combineReducers)({
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -1376,51 +1374,51 @@ var _actions = __webpack_require__(/*! ../pages/actions.js */ "./app/pages/actio
 var _normalizr = __webpack_require__(/*! normalizr */ "./node_modules/normalizr/dist/src/index.js");
 
 var initialState = {
-    data: {},
-    error: null,
-    loading: false
+  data: {},
+  error: null,
+  loading: false
 };
 
 var types = _actions.config.reviews.types;
 
 function reviewsReducer() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-    var action = arguments[1];
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
 
-    switch (action.type) {
-        case types.FETCH_SUCCESS:
-            {
-                var review = new _normalizr.schema.Entity('review', {}, {
-                    idAttribute: 'business_id',
-                    mergeStrategy: function mergeStrategy(entityA, entityB) {
-                        return {
-                            score: (entityA.score + entityB.score) / 2
-                        };
-                    }
-                });
-                var reviewList = new _normalizr.schema.Array(review);
-                var reviews = (0, _normalizr.normalize)(action.payload, reviewList);
-                return _extends({}, state, {
-                    data: _extends({}, state.data, reviews.entities.review),
-                    loading: false,
-                    error: null
-                });
-            }
-        case types.FETCH_FAILURE:
-            {
-                return _extends({}, state, {
-                    error: action.payload,
-                    loading: false
-                });
-            }
-        case types.FETCH:
-            return _extends({}, state, {
-                error: null,
-                loading: true
-            });
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case types.FETCH_SUCCESS:
+      {
+        var review = new _normalizr.schema.Entity('review', {}, {
+          idAttribute: 'business_id',
+          mergeStrategy: function mergeStrategy(entityA, entityB) {
+            return {
+              score: (entityA.score + entityB.score) / 2
+            };
+          }
+        });
+        var reviewList = new _normalizr.schema.Array(review);
+        var reviews = (0, _normalizr.normalize)(action.payload, reviewList);
+        return _extends({}, state, {
+          data: _extends({}, state.data, reviews.entities.review),
+          loading: false,
+          error: null
+        });
+      }
+    case types.FETCH_FAILURE:
+      {
+        return _extends({}, state, {
+          error: action.payload,
+          loading: false
+        });
+      }
+    case types.FETCH:
+      return _extends({}, state, {
+        error: null,
+        loading: true
+      });
+    default:
+      return state;
+  }
 }
 
 exports.default = reviewsReducer;
