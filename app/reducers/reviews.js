@@ -1,5 +1,5 @@
 import { config } from '../pages/actions.js' 
-import { normalize, schema, arrayOf } from 'normalizr';
+import { normalize, schema } from 'normalizr';
 
 
 const initialState = {
@@ -11,7 +11,6 @@ const initialState = {
 const types = config.reviews.types
 
 function reviewsReducer (state = initialState, action) {
-    console.log('action', action)
     switch (action.type) {
         case types.FETCH_SUCCESS: {
             const review = new schema.Entity('review', {}, { 

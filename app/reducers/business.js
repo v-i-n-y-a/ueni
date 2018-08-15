@@ -43,19 +43,23 @@ function businessReducer (state = initialState, action) {
                 error: null,
                 loading: true
             };
-        case objectTypes.FETCH_SUCCESS:
+        case objectTypes.FETCH_SUCCESS: {
             const id =  action.meta.id
             const dataById = {...state.dataById}
             if (isEmpty(action.payload)) {
-              if (id in state.dataById) delete dataById[id]
-            } else
-                dataById[id] = action.payload
+              if (id in state.dataById) {
+                delete dataById[id]
+              }
+            } else {
+              dataById[id] = action.payload
+            }
             return {
               ...state,
               dataById, 
               loading: false,
               error: null
             }
+        }
         default:
             return state;
     }

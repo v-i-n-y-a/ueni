@@ -376,25 +376,21 @@ var BusinessCard = function BusinessCard(_ref) {
       _CardContent2.default,
       null,
       _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          _Typography2.default,
-          { gutterBottom: true, variant: 'headline', component: 'h2' },
-          item.name
-        ),
-        _react2.default.createElement(
-          _Typography2.default,
-          { component: 'p', className: classes.location },
-          item.city,
-          ', ',
-          item.country
-        ),
-        _react2.default.createElement(
-          _Typography2.default,
-          { component: 'p', className: classes.description },
-          item.description
-        )
+        _Typography2.default,
+        { gutterBottom: true, variant: 'headline', component: 'h2' },
+        item.name
+      ),
+      _react2.default.createElement(
+        _Typography2.default,
+        { component: 'p', className: classes.location },
+        item.city,
+        ', ',
+        item.country
+      ),
+      _react2.default.createElement(
+        _Typography2.default,
+        { component: 'p', className: classes.description },
+        item.description
       )
     ),
     _react2.default.createElement(
@@ -1301,16 +1297,22 @@ function businessReducer() {
                 loading: true
             });
         case objectTypes.FETCH_SUCCESS:
-            var id = action.meta.id;
-            var dataById = _extends({}, state.dataById);
-            if ((0, _isEmpty2.default)(action.payload)) {
-                if (id in state.dataById) delete dataById[id];
-            } else dataById[id] = action.payload;
-            return _extends({}, state, {
-                dataById: dataById,
-                loading: false,
-                error: null
-            });
+            {
+                var id = action.meta.id;
+                var dataById = _extends({}, state.dataById);
+                if ((0, _isEmpty2.default)(action.payload)) {
+                    if (id in state.dataById) {
+                        delete dataById[id];
+                    }
+                } else {
+                    dataById[id] = action.payload;
+                }
+                return _extends({}, state, {
+                    dataById: dataById,
+                    loading: false,
+                    error: null
+                });
+            }
         default:
             return state;
     }
@@ -1385,7 +1387,6 @@ function reviewsReducer() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
     var action = arguments[1];
 
-    console.log('action', action);
     switch (action.type) {
         case types.FETCH_SUCCESS:
             {

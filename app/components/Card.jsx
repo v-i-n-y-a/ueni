@@ -46,17 +46,15 @@ const BusinessCard = ({ item, classes }) => (
       title={item.name} 
     />
     <CardContent>
-      <div>
-        <Typography gutterBottom variant="headline" component="h2">
-          {item.name}
-        </Typography>
-        <Typography component="p" className={classes.location}>
-            {item.city}, {item.country}
-        </Typography>
-        <Typography component="p" className={classes.description}>
-            {item.description}
-        </Typography>
-      </div>
+      <Typography gutterBottom variant="headline" component="h2">
+        {item.name}
+      </Typography>
+      <Typography component="p" className={classes.location}>
+          {item.city}, {item.country}
+      </Typography>
+      <Typography component="p" className={classes.description}>
+          {item.description}
+      </Typography>
     </CardContent>
     <CardActions>
       <Link className={classes.link} to={`/details/${item.id}`}>
