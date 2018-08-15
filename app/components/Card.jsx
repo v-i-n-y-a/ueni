@@ -12,7 +12,7 @@ const styles = {
   card: {
     maxWidth: 345,
   },
-
+  
   location: {
     margin: '5px 0',
     fontStyle: 'italic'
@@ -26,6 +26,7 @@ const styles = {
     height: 0,
     paddingTop: '56.25%', // 16:9
   },
+
   link: {
     textDecoration: 'none',
     color: '#3f51b5',
@@ -41,15 +42,17 @@ const BusinessCard = ({ item, classes }) => (
       title={item.name} 
     />
     <CardContent>
-      <Typography gutterBottom variant="headline" component="h2">
-        {item.name}
-      </Typography>
-      <Typography component="p" className={classes.location}>
-          {item.city}, {item.country}
-      </Typography>
-      <Typography component="p" className={classes.description}>
-          {item.description}
-      </Typography>
+      <div>
+        <Typography gutterBottom variant="headline" component="h2">
+          {item.name}
+        </Typography>
+        <Typography component="p" className={classes.location}>
+            {item.city}, {item.country}
+        </Typography>
+        <Typography component="p" className={classes.description}>
+            {item.description}
+        </Typography>
+      </div>
     </CardContent>
     <CardActions>
       <Link className={classes.link} to={`/details/${item.id}`}>

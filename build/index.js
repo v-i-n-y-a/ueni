@@ -192,6 +192,7 @@ var styles = {
     height: 0,
     paddingTop: '56.25%' // 16:9
   },
+
   link: {
     textDecoration: 'none',
     color: '#3f51b5',
@@ -214,21 +215,25 @@ var BusinessCard = function BusinessCard(_ref) {
       _CardContent2.default,
       null,
       _react2.default.createElement(
-        _Typography2.default,
-        { gutterBottom: true, variant: 'headline', component: 'h2' },
-        item.name
-      ),
-      _react2.default.createElement(
-        _Typography2.default,
-        { component: 'p', className: classes.location },
-        item.city,
-        ', ',
-        item.country
-      ),
-      _react2.default.createElement(
-        _Typography2.default,
-        { component: 'p', className: classes.description },
-        item.description
+        'div',
+        null,
+        _react2.default.createElement(
+          _Typography2.default,
+          { gutterBottom: true, variant: 'headline', component: 'h2' },
+          item.name
+        ),
+        _react2.default.createElement(
+          _Typography2.default,
+          { component: 'p', className: classes.location },
+          item.city,
+          ', ',
+          item.country
+        ),
+        _react2.default.createElement(
+          _Typography2.default,
+          { component: 'p', className: classes.description },
+          item.description
+        )
       )
     ),
     _react2.default.createElement(
