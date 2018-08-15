@@ -1,21 +1,15 @@
 @import "normalize";
-@import "animations";
 @import "fonts";
 @import "varibles";
 @import "mixins";
 @import "main";
 
 // PAGES
-@import "pages/home";
-@import "pages/about";
+@import "pages/list";
 
 // SMART COMPONENTS
-@import "components/open_weather_search";
-
-// DUMB COMPONENTS
-@import "components/dumb/weather_view";
+@import "components/card";
+@import "components/header";
 
 // SERVICES
-@import "services/alert";
-@import "services/notification";
 @import 'node_modules/react-selectize/themes/index.css';
