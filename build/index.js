@@ -277,23 +277,42 @@ var _reactSelectize = __webpack_require__(/*! react-selectize */ "./node_modules
 
 var _utils = __webpack_require__(/*! ./utils */ "./app/components/utils.js");
 
+var _Typography = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/Typography/index.js");
+
+var _Typography2 = _interopRequireDefault(_Typography);
+
+var _styles = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/styles/index.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Filter = function Filter(_ref) {
-  var data = _ref.data,
+  var title = _ref.title,
+      data = _ref.data,
       placeholder = _ref.placeholder,
       _ref$onChange = _ref.onChange,
-      onChange = _ref$onChange === undefined ? _utils.emptyFunc : _ref$onChange;
-  return _react2.default.createElement(_reactSelectize.SimpleSelect, {
-    placeholder: 'All',
-    onValueChange: onChange,
-    options: data.map(function (item) {
-      return { label: item, value: item };
+      onChange = _ref$onChange === undefined ? _utils.emptyFunc : _ref$onChange,
+      classes = _ref.classes;
+  return _react2.default.createElement(
+    'div',
+    { className: classes.tool },
+    _react2.default.createElement(
+      _Typography2.default,
+      { className: classes.label },
+      title
+    ),
+    _react2.default.createElement(_reactSelectize.SimpleSelect, {
+      placeholder: 'All',
+      style: { width: 250 },
+      theme: 'material',
+      onValueChange: onChange,
+      options: data.map(function (item) {
+        return { label: item, value: item };
+      })
     })
-  });
+  );
 };
 
-exports.default = Filter;
+exports.default = (0, _styles.withStyles)(_utils.styles)(Filter);
 
 /***/ }),
 
@@ -392,6 +411,12 @@ var _react2 = _interopRequireDefault(_react);
 
 var _utils = __webpack_require__(/*! ./utils */ "./app/components/utils.js");
 
+var _Typography = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/Typography/index.js");
+
+var _Typography2 = _interopRequireDefault(_Typography);
+
+var _styles = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/styles/index.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -428,20 +453,25 @@ var Sort = function (_Component) {
   _createClass(Sort, [{
     key: 'render',
     value: function render() {
+      var classes = this.props.classes;
       var order = this.state.order;
 
       return _react2.default.createElement(
         'div',
-        { className: 'sort' },
+        { className: classes.tool },
         _react2.default.createElement(
-          'strong',
-          null,
-          'Sort'
+          _Typography2.default,
+          { className: classes.label },
+          'Sort:'
         ),
         _react2.default.createElement(
           'a',
-          { href: '#', onClick: this.changeOrder },
-          order === 'ASC' ? 'A-Z' : 'Z-A'
+          { href: '#', onClick: this.changeOrder, className: classes.link },
+          _react2.default.createElement(
+            _Typography2.default,
+            { variant: 'subheading' },
+            order === 'ASC' ? 'A-Z' : 'Z-A'
+          )
         )
       );
     }
@@ -450,7 +480,7 @@ var Sort = function (_Component) {
   return Sort;
 }(_react.Component);
 
-exports.default = Sort;
+exports.default = (0, _styles.withStyles)(_utils.styles)(Sort);
 
 /***/ }),
 
@@ -468,6 +498,21 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var emptyFunc = exports.emptyFunc = function emptyFunc() {};
+
+var styles = exports.styles = {
+  tool: {
+    display: 'flex',
+    alignItems: 'center'
+  },
+
+  label: {
+    marginRight: 5
+  },
+
+  link: {
+    textDecoration: 'none'
+  }
+};
 
 /***/ }),
 
@@ -719,12 +764,13 @@ var styles = {
 
   toolBar: {
     display: 'flex',
-    justifyContent: 'end'
+    justifyContent: 'end',
+    alignItems: 'center'
   },
 
   tool: {
     display: 'flex',
-    margin: 5
+    marginLeft: 15
   }
 };
 
@@ -821,6 +867,7 @@ var List = function (_Component) {
           list = _state2.list,
           order = _state2.order;
 
+      console.log('loading', loading, 'error', error);
       return _react2.default.createElement(
         'div',
         null,

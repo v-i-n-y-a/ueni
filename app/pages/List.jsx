@@ -31,12 +31,13 @@ const styles = {
 
   toolBar: {
     display: 'flex',
-    justifyContent: 'end'
+    justifyContent: 'end',
+    alignItems: 'center'
   },
 
   tool: {
     display: 'flex',
-    margin: 5
+    marginLeft: 15
   }
 };
 
@@ -100,6 +101,7 @@ class List extends Component {
   render() {
     const { businesses: { loading, data, error }, categories, classes } = this.props
     const { list, order } = this.state
+    console.log('loading', loading, 'error', error)
     return (
       <div>
         <nav className={classes.nav}>

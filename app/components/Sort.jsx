@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { emptyFunc } from './utils'
+import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
+import { styles } from './utils'
 
-export default class Sort extends Component {
+
+class Sort extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -20,12 +24,13 @@ export default class Sort extends Component {
   }
 
   render () {
+    const { classes } = this.props
     const { order } = this.state
     return (
-      <div className="sort">
-        <strong>Sort</strong>
-        <a href="#" onClick={this.changeOrder} >
-          { order === 'ASC' ? 'A-Z' : 'Z-A' }
+      <div className={classes.tool}>
+        <Typography className={classes.label}>Sort:</Typography>
+        <a href="#" onClick={this.changeOrder} className={classes.link}>
+          <Typography variant="subheading">{ order === 'ASC' ? 'A-Z' : 'Z-A' }</Typography>
         </a>
       </div>
     )
@@ -33,3 +38,4 @@ export default class Sort extends Component {
 
  }
 
+export default withStyles(styles)(Sort)
