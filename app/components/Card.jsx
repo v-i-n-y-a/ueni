@@ -10,7 +10,8 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
   card: {
-    maxWidth: 345,
+    maxWidth: 450,
+    margin: '20px'
   },
   
   location: {
@@ -19,7 +20,9 @@ const styles = {
   },
 
   description: {
-    fontStyle: 'italic'
+    fontStyle: 'italic',
+    maxHeight: '100px',
+    overflow: 'hidden'
   },
 
   media: {

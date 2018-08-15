@@ -8,6 +8,38 @@ import Sort from '../components/Sort.jsx'
 import Card from '../components/Card.jsx'
 import Header from '../components/Header.jsx'
 
+import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = {
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    height: 140,
+    width: 100,
+  },
+  control: {
+    padding: 10,
+  },
+
+  nav: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    margin: 20
+  },
+
+  toolBar: {
+    display: 'flex',
+    justifyContent: 'end'
+  },
+
+  tool: {
+    display: 'flex',
+    margin: 5
+  }
+};
+
 class List extends Component {
   
   constructor(props) {
@@ -66,28 +98,32 @@ class List extends Component {
   }
 
   render() {
-    const { businesses: { loading, data, error }, categories } = this.props
+    const { businesses: { loading, data, error }, categories, classes } = this.props
     const { list, order } = this.state
     return (
       <div>
-        <Header title="SELECT YOUR BUSINESS" logo="1" />
-        { error && <div className="error">{error.message}</div> }
-        { loading && <div>loading...</div> }
-        <nav>
-          <Sort onChange={this.sortList} order={order} />
-          <div>
-            Category: <Filter data={categories} onChange={this.filterList(data)} placeholder="All"/>
+        <nav className={classes.nav}>
+          <Header title="SELECT YOUR BUSINESS" logo="1" />
+          <div className={classes.toolBar}>
+            <div className={classes.tool}>
+              <Sort onChange={this.sortList} order={order} />
+            </div>
+            <div className={classes.tool}>
+              <Filter title="Category" data={categories} onChange={this.filterList(data)} placeholder="All"/>
+            </div>
           </div>
         </nav>
-        <section>
+        <Grid container className={classes.root} spacing={16}>
           {list.map(item => 
             <Card key={item.id} item={item}/>
           )}
-        </section>
+        </Grid>
+        { error && <div className="error">{error.message}</div> }
+        { loading && <div>loading...</div> }
       </div>
     )
     
   }
 }
 
-export default connect(mstpList, mdtpList)(List)
+export default connect(mstpList, mdtpList)(withStyles(styles)(List))
