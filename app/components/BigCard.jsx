@@ -10,8 +10,9 @@ import { withStyles } from '@material-ui/core/styles';
 //Using material-ui framework for responsive
 const styles = {
   card: {
-    maxWidth: 450,
-    margin: '20px'
+    margin: 20,
+    display: 'flex',
+    flexDirection: 'row'
   },
   
   location: {
@@ -21,32 +22,46 @@ const styles = {
 
   description: {
     fontStyle: 'italic',
-    height: 80,
-    overflow: 'hidden'
   },
 
   media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
+    margin: 20,
+    flex: 1
+  },
+
+  content: {
+    flex: 1
+  },
+
+  img: {
+    width: '100%',
+    minWidth: 250
   },
 
   link: {
     textDecoration: 'none',
     color: '#3f51b5',
     paddingLeft: '10px'
+  },
+
+  rating: {
+    marginTop: 20,
+    fontStyle: 'italic',
+  },
+
+  category: {
+    fontStyle: 'italic',
   }
 };
 
 //#TODO: truncate description by word if it's too big add ... at the end
 const BusinessCard = ({ item, classes }) => (
   <Card className={classes.card}>
-    <CardMedia 
-      className={classes.media}
-      image={item.imageUrl} 
-      title={item.name} 
-    />
-    <CardContent>
-      <div>
+    <picture className={classes.media}>
+      <img className={classes.img} src={item.imageUrl} />
+    </picture>
+    <div className={classes.content}>
+      <CardContent>
         <Typography gutterBottom variant="headline" component="h2">
           {item.name}
         </Typography>
@@ -56,13 +71,19 @@ const BusinessCard = ({ item, classes }) => (
         <Typography component="p" className={classes.description}>
             {item.description}
         </Typography>
-      </div>
-    </CardContent>
-    <CardActions>
-      <Link className={classes.link} to={`/details/${item.id}`}>
-          Learn More
-      </Link>
-    </CardActions>
+        <Typography component="p" className={classes.rating}>
+            Rating: {item.score}
+        </Typography>
+        <Typography component="p" className={classes.category}>
+            Category: {item.category}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Link className={classes.link} to={`/`}>
+          Back
+        </Link>
+      </CardActions>
+    </div>
   </Card>
 )
 

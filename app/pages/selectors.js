@@ -5,7 +5,13 @@ const getBusinesses = property('businesses');
 
 export const mstpList = createSelector(
   getBusinesses,
-  businesses => ({ businesses, categories: businesses.data.map( item =>  item.category ) })
+  businesses => {
+    const categories = businesses.data.map( item =>  item.category )
+    categories.sort()
+    return { 
+      businesses, categories
+    }
+  }
 )
 
 const getBusinessStatus = property('businesses.loading')
@@ -26,7 +32,7 @@ export const mstpDetails = createSelector(
     const loading = businessStatus || reviewStatus || false
     const error = businessError || reviewError || null
     const score = scoreVal == undefined ? 'No Reviews': `${scoreVal}/5`
-    return { score, loading, business, error }
+    return { loading, business: { ...business, score }, error }
   }
 )
 

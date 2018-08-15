@@ -3,8 +3,9 @@ import { connect } from 'react-redux'
 import { mdtpList } from './actions'
 import { mstpDetails } from './selectors'
 import { mdtpDetails } from './actions'
-import Card from '../components/Card.jsx'
+import Card from '../components/BigCard.jsx'
 import Header from '../components/Header.jsx'
+import Grid from '@material-ui/core/Grid';
 
 class Details extends Component {
   
@@ -15,13 +16,17 @@ class Details extends Component {
   }
   
   render() {
-    const { score, loading, business, error } = this.props
+    const { loading, business, error } = this.props
     return (
       <div>
-        <Header title="Review" logo="2" />
-        { error && <div className="error">{error.message}</div> }
-        { loading && <div>loading...</div> }
+        <div style={{ margin: 20 }}>
+          <Header title="Review" logo="2"/>
+        </div>
         { business && <Card item={business} /> }
+        { error && 
+          <div className="error">{error.message}</div> 
+        }
+        { loading && <div>loading...</div> }
       </div>
     )
   }

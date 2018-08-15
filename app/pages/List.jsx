@@ -15,14 +15,7 @@ const styles = {
   root: {
     flexGrow: 1,
   },
-  paper: {
-    height: 140,
-    width: 100,
-  },
-  control: {
-    padding: 10,
-  },
-
+  
   nav: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -115,8 +108,8 @@ class List extends Component {
           </div>
         </Grid>
         {list.map(item => 
-          <Grid item xs={6}>
-            <Card key={item.id} item={item}/>
+          <Grid key={item.id} item xs={6}>
+            <Card item={item}/>
           </Grid>
           )}
         { error && <Grid item xs={12} className="error">{error.message}</Grid> }

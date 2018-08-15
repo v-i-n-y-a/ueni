@@ -130,6 +130,162 @@ _reactDom2.default.render(_react2.default.createElement(
 
 /***/ }),
 
+/***/ "./app/components/BigCard.jsx":
+/*!************************************!*\
+  !*** ./app/components/BigCard.jsx ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+var _Card = __webpack_require__(/*! @material-ui/core/Card */ "./node_modules/@material-ui/core/Card/index.js");
+
+var _Card2 = _interopRequireDefault(_Card);
+
+var _CardContent = __webpack_require__(/*! @material-ui/core/CardContent */ "./node_modules/@material-ui/core/CardContent/index.js");
+
+var _CardContent2 = _interopRequireDefault(_CardContent);
+
+var _CardMedia = __webpack_require__(/*! @material-ui/core/CardMedia */ "./node_modules/@material-ui/core/CardMedia/index.js");
+
+var _CardMedia2 = _interopRequireDefault(_CardMedia);
+
+var _Typography = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/Typography/index.js");
+
+var _Typography2 = _interopRequireDefault(_Typography);
+
+var _CardActions = __webpack_require__(/*! @material-ui/core/CardActions */ "./node_modules/@material-ui/core/CardActions/index.js");
+
+var _CardActions2 = _interopRequireDefault(_CardActions);
+
+var _styles = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/styles/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//Using material-ui framework for responsive
+var styles = {
+  card: {
+    margin: 20,
+    display: 'flex',
+    flexDirection: 'row'
+  },
+
+  location: {
+    margin: '5px 0',
+    fontStyle: 'italic'
+  },
+
+  description: {
+    fontStyle: 'italic'
+  },
+
+  media: {
+    margin: 20,
+    flex: 1
+  },
+
+  content: {
+    flex: 1
+  },
+
+  img: {
+    width: '100%',
+    minWidth: 250
+  },
+
+  link: {
+    textDecoration: 'none',
+    color: '#3f51b5',
+    paddingLeft: '10px'
+  },
+
+  rating: {
+    marginTop: 20,
+    fontStyle: 'italic'
+  },
+
+  category: {
+    fontStyle: 'italic'
+  }
+};
+
+//#TODO: truncate description by word if it's too big add ... at the end
+var BusinessCard = function BusinessCard(_ref) {
+  var item = _ref.item,
+      classes = _ref.classes;
+  return _react2.default.createElement(
+    _Card2.default,
+    { className: classes.card },
+    _react2.default.createElement(
+      'picture',
+      { className: classes.media },
+      _react2.default.createElement('img', { className: classes.img, src: item.imageUrl })
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: classes.content },
+      _react2.default.createElement(
+        _CardContent2.default,
+        null,
+        _react2.default.createElement(
+          _Typography2.default,
+          { gutterBottom: true, variant: 'headline', component: 'h2' },
+          item.name
+        ),
+        _react2.default.createElement(
+          _Typography2.default,
+          { component: 'p', className: classes.location },
+          item.city,
+          ', ',
+          item.country
+        ),
+        _react2.default.createElement(
+          _Typography2.default,
+          { component: 'p', className: classes.description },
+          item.description
+        ),
+        _react2.default.createElement(
+          _Typography2.default,
+          { component: 'p', className: classes.rating },
+          'Rating: ',
+          item.score
+        ),
+        _react2.default.createElement(
+          _Typography2.default,
+          { component: 'p', className: classes.category },
+          'Category: ',
+          item.category
+        )
+      ),
+      _react2.default.createElement(
+        _CardActions2.default,
+        null,
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { className: classes.link, to: '/' },
+          'Back'
+        )
+      )
+    )
+  );
+};
+
+exports.default = (0, _styles.withStyles)(styles)(BusinessCard);
+
+/***/ }),
+
 /***/ "./app/components/Card.jsx":
 /*!*********************************!*\
   !*** ./app/components/Card.jsx ***!
@@ -174,6 +330,7 @@ var _styles = __webpack_require__(/*! @material-ui/core/styles */ "./node_module
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//Using material-ui framework for responsive
 var styles = {
   card: {
     maxWidth: 450,
@@ -187,7 +344,7 @@ var styles = {
 
   description: {
     fontStyle: 'italic',
-    maxHeight: '100px',
+    height: 80,
     overflow: 'hidden'
   },
 
@@ -203,6 +360,7 @@ var styles = {
   }
 };
 
+//#TODO: truncate description by word if it's too big add ... at the end
 var BusinessCard = function BusinessCard(_ref) {
   var item = _ref.item,
       classes = _ref.classes;
@@ -617,13 +775,17 @@ var _actions = __webpack_require__(/*! ./actions */ "./app/pages/actions.js");
 
 var _selectors = __webpack_require__(/*! ./selectors */ "./app/pages/selectors.js");
 
-var _Card = __webpack_require__(/*! ../components/Card.jsx */ "./app/components/Card.jsx");
+var _BigCard = __webpack_require__(/*! ../components/BigCard.jsx */ "./app/components/BigCard.jsx");
 
-var _Card2 = _interopRequireDefault(_Card);
+var _BigCard2 = _interopRequireDefault(_BigCard);
 
 var _Header = __webpack_require__(/*! ../components/Header.jsx */ "./app/components/Header.jsx");
 
 var _Header2 = _interopRequireDefault(_Header);
+
+var _Grid = __webpack_require__(/*! @material-ui/core/Grid */ "./node_modules/@material-ui/core/Grid/index.js");
+
+var _Grid2 = _interopRequireDefault(_Grid);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -657,7 +819,6 @@ var Details = function (_Component) {
     key: 'render',
     value: function render() {
       var _props2 = this.props,
-          score = _props2.score,
           loading = _props2.loading,
           business = _props2.business,
           error = _props2.error;
@@ -665,7 +826,12 @@ var Details = function (_Component) {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_Header2.default, { title: 'Review', logo: '2' }),
+        _react2.default.createElement(
+          'div',
+          { style: { margin: 20 } },
+          _react2.default.createElement(_Header2.default, { title: 'Review', logo: '2' })
+        ),
+        business && _react2.default.createElement(_BigCard2.default, { item: business }),
         error && _react2.default.createElement(
           'div',
           { className: 'error' },
@@ -675,8 +841,7 @@ var Details = function (_Component) {
           'div',
           null,
           'loading...'
-        ),
-        business && _react2.default.createElement(_Card2.default, { item: business })
+        )
       );
     }
   }]);
@@ -747,13 +912,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var styles = {
   root: {
     flexGrow: 1
-  },
-  paper: {
-    height: 140,
-    width: 100
-  },
-  control: {
-    padding: 10
   },
 
   nav: {
@@ -892,8 +1050,8 @@ var List = function (_Component) {
         list.map(function (item) {
           return _react2.default.createElement(
             _Grid2.default,
-            { item: true, xs: 6 },
-            _react2.default.createElement(_Card2.default, { key: item.id, item: item })
+            { key: item.id, item: true, xs: 6 },
+            _react2.default.createElement(_Card2.default, { item: item })
           );
         }),
         error && _react2.default.createElement(
@@ -1030,6 +1188,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.mstpDetails = exports.mstpList = undefined;
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _reselect = __webpack_require__(/*! reselect */ "./node_modules/reselect/lib/index.js");
 
 var _property = __webpack_require__(/*! lodash/property */ "./node_modules/lodash/property.js");
@@ -1041,9 +1201,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var getBusinesses = (0, _property2.default)('businesses');
 
 var mstpList = exports.mstpList = (0, _reselect.createSelector)(getBusinesses, function (businesses) {
-  return { businesses: businesses, categories: businesses.data.map(function (item) {
-      return item.category;
-    }) };
+  var categories = businesses.data.map(function (item) {
+    return item.category;
+  });
+  categories.sort();
+  return {
+    businesses: businesses, categories: categories
+  };
 });
 
 var getBusinessStatus = (0, _property2.default)('businesses.loading');
@@ -1061,7 +1225,7 @@ var mstpDetails = exports.mstpDetails = (0, _reselect.createSelector)(getBusines
   var loading = businessStatus || reviewStatus || false;
   var error = businessError || reviewError || null;
   var score = scoreVal == undefined ? 'No Reviews' : scoreVal + '/5';
-  return { score: score, loading: loading, business: business, error: error };
+  return { loading: loading, business: _extends({}, business, { score: score }), error: error };
 });
 
 /***/ }),
