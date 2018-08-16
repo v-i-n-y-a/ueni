@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BigCard item={business} /> BigCard renders correctly 1`] = `
+<div
+  className="MuiPaper-root-11 MuiPaper-elevation1-14 MuiPaper-rounded-12 MuiCard-root-10 BusinessCard-card-1"
+>
+  <picture
+    className="BusinessCard-media-4"
+  >
+    <img
+      className="BusinessCard-img-6"
+      src="https://res.cloudinary.com/ueni/image/upload/c_scale,f_auto,fl_lossy,h_180/v1502450090/qkxvzyhladloualxcb2y.jpg"
+    />
+  </picture>
+  <div
+    className="BusinessCard-content-5"
+  >
+    <div
+      className="MuiCardContent-root-38"
+    >
+      <h2
+        className="MuiTypography-root-39 MuiTypography-headline-44 MuiTypography-gutterBottom-56"
+      >
+        Dani's Barber Shop
+      </h2>
+      <p
+        className="MuiTypography-root-39 MuiTypography-body1-48 BusinessCard-location-2"
+      >
+        London
+        , 
+        United Kingdom
+      </p>
+      <p
+        className="MuiTypography-root-39 MuiTypography-body1-48 BusinessCard-description-3"
+      >
+        We only use top quality products, recommended by grooming specialists and our clients themselves. Our stylish surrounding and décor shouldn’t distract you from our friendly atmosphere, we want you to feel right at home! 
+      </p>
+      <p
+        className="MuiTypography-root-39 MuiTypography-body1-48 BusinessCard-rating-8"
+      >
+        Rating: 
+        3.4
+      </p>
+      <p
+        className="MuiTypography-root-39 MuiTypography-body1-48 BusinessCard-category-9"
+      >
+        Category: 
+        Barber
+      </p>
+    </div>
+    <div
+      className="MuiCardActions-root-64"
+    >
+      <a
+        className="BusinessCard-link-7 MuiCardActions-action-65"
+        href="/"
+        onClick={[Function]}
+      >
+        Back
+      </a>
+    </div>
+  </div>
+</div>
+`;

@@ -6,6 +6,7 @@ import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
 import CardActions from '@material-ui/core/CardActions'
 import { withStyles } from '@material-ui/core/styles'
+import isEmpty from 'lodash/isEmpty'
 
 //Using material-ui framework for responsive
 const styles = {
@@ -55,36 +56,40 @@ const styles = {
 }
 
 //#TODO: truncate description by word if it's too big add ... at the end
-const BusinessCard = ({ item, classes }) => (
-  <Card className={classes.card}>
-    <picture className={classes.media}>
-      <img className={classes.img} src={item.imageUrl} />
-    </picture>
-    <div className={classes.content}>
-      <CardContent>
-        <Typography gutterBottom variant="headline" component="h2">
-          {item.name}
-        </Typography>
-        <Typography component="p" className={classes.location}>
-          {item.city}, {item.country}
-        </Typography>
-        <Typography component="p" className={classes.description}>
-          {item.description}
-        </Typography>
-        <Typography component="p" className={classes.rating}>
-          Rating: {item.score}
-        </Typography>
-        <Typography component="p" className={classes.category}>
-          Category: {item.category}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Link className={classes.link} to={`/`}>
-          Back
-        </Link>
-      </CardActions>
-    </div>
-  </Card>
-)
+const BusinessCard = ({ item, classes }) => {
+
+  if (isEmpty(item)) { return (<div></div>) }
+  return (
+    <Card className={classes.card}>
+      <picture className={classes.media}>
+        <img className={classes.img} src={item.imageUrl} />
+      </picture>
+      <div className={classes.content}>
+        <CardContent>
+          <Typography gutterBottom variant="headline" component="h2">
+            {item.name}
+          </Typography>
+          <Typography component="p" className={classes.location}>
+            {item.city}, {item.country}
+          </Typography>
+          <Typography component="p" className={classes.description}>
+            {item.description}
+          </Typography>
+          <Typography component="p" className={classes.rating}>
+            Rating: {item.score}
+          </Typography>
+          <Typography component="p" className={classes.category}>
+            Category: {item.category}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Link className={classes.link} to={`/`}>
+            Back
+          </Link>
+        </CardActions>
+      </div>
+    </Card>
+  )
+}
 
 export default withStyles(styles)(BusinessCard)

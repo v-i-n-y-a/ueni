@@ -126,7 +126,7 @@
     "server": "nodemon --delay 2 index.js",
     "server:e2e": "node index.js",
     "staging": "gulp clean-build && webpack --mode=production && gulp prod --production && grunt",
-    "test": "jest --coverage",
+    "test": "jest",
     "test:watch": "jest --coverage --watch"
   }
 }
