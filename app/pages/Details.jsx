@@ -6,6 +6,9 @@ import { mdtpDetails } from './actions'
 import Card from '../components/BigCard.jsx'
 import Header from '../components/Header.jsx'
 import Grid from '@material-ui/core/Grid'
+import { withStyles } from '@material-ui/core/styles'
+import styles from './styles'
+import { Link } from 'react-router-dom'
 
 class Details extends Component {
   componentWillMount() {
@@ -15,11 +18,16 @@ class Details extends Component {
   }
 
   render() {
-    const { loading, business, error } = this.props
+    const { loading, business, error, classes } = this.props
     return (
       <div>
-        <div style={{ margin: 20 }}>
+        <div className={classes.nav}>
           <Header title="Review" logo="2" />
+          <div className={classes.toolBar}>
+            <div className={classes.tool}>
+              <Link className={classes.link} to={`/`}>Home</Link>
+            </div>
+          </div>
         </div>
         {business && <Card item={business} />}
         {error && <div className="error">{error.message}</div>}
@@ -29,4 +37,4 @@ class Details extends Component {
   }
 }
 
-export default connect(mstpDetails, mdtpDetails)(Details)
+export default connect(mstpDetails, mdtpDetails)(withStyles(styles)(Details))

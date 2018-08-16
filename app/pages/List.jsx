@@ -10,29 +10,8 @@ import Header from '../components/Header.jsx'
 
 import Grid from '@material-ui/core/Grid'
 import { withStyles } from '@material-ui/core/styles'
+import styles from './styles'
 
-const styles = {
-  root: {
-    flexGrow: 1
-  },
-
-  nav: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    margin: 20
-  },
-
-  toolBar: {
-    display: 'flex',
-    justifyContent: 'end',
-    alignItems: 'center'
-  },
-
-  tool: {
-    display: 'flex',
-    marginLeft: 15
-  }
-}
 
 class List extends Component {
   constructor(props) {

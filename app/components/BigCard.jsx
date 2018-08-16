@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
@@ -64,30 +63,23 @@ const BusinessCard = ({ item, classes }) => {
       <picture className={classes.media}>
         <img className={classes.img} src={item.imageUrl} />
       </picture>
-      <div className={classes.content}>
-        <CardContent>
-          <Typography gutterBottom variant="headline" component="h2">
-            {item.name}
-          </Typography>
-          <Typography component="p" className={classes.location}>
-            {item.city}, {item.country}
-          </Typography>
-          <Typography component="p" className={classes.description}>
-            {item.description}
-          </Typography>
-          <Typography component="p" className={classes.rating}>
-            Rating: {item.score}
-          </Typography>
-          <Typography component="p" className={classes.category}>
-            Category: {item.category}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Link className={classes.link} to={`/`}>
-            Back
-          </Link>
-        </CardActions>
-      </div>
+      <CardContent>
+        <Typography gutterBottom variant="headline" component="h2">
+          {item.name}
+        </Typography>
+        <Typography component="p" className={classes.location}>
+          {item.city}, {item.country}
+        </Typography>
+        <Typography component="p" className={classes.description}>
+          {item.description}
+        </Typography>
+        <Typography component="p" className={classes.rating}>
+          Rating: {item.score}
+        </Typography>
+        <Typography component="p" className={classes.category}>
+          Category: {item.category}
+        </Typography>
+      </CardContent>
     </Card>
   )
 }

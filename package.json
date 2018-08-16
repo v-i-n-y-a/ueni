@@ -127,6 +127,7 @@
     "server:e2e": "node index.js",
     "staging": "gulp clean-build && webpack --mode=production && gulp prod --production && grunt",
     "test": "jest",
+    "test:u": "jest -u",
     "test:watch": "jest --coverage --watch"
   }
 }
